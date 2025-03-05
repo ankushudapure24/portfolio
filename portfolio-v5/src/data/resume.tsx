@@ -694,4 +694,58 @@ export const DATA2 = {
   title: "My Projects",
   text: "Blur text",
   text2: "Slide up text",
+
+  skills: [
+    {
+      name: "React",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" 
+    },
+    {
+      name: "Next.js",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg"
+    },
+    {
+      name: "Typescript",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/f/f5/Typescript.svg"
+    },
+    {
+      name: "Node.js",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg"
+    },
+    {
+      name: "Python",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
+    },
+    {
+      name: "Go",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg"
+    },
+    {
+      name: "Postgres",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
+    },
+    {
+      name: "Docker",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg"
+    },
+    {
+      name: "Kubernetes",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg"
+    },
+    {
+      name: "Java",
+      icons_url: "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg"
+    },
+    {
+      name: "C++",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg"
+    },
+    {
+      name: "HTML5",
+      icons_url: "https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg"
+    }
+  ],
+
+
+
 } as const;

@@ -110,6 +110,14 @@ const config = {
   					transform: 'rotate(var(--angle)) translateX(-500px)',
   					opacity: '0'
   				}
+  			},
+  			grid: {
+  				'0%': {
+  					transform: 'translateY(-50%)'
+  				},
+  				'100%': {
+  					transform: 'translateY(0)'
+  				}
   			}
   		},
   		animation: {
@@ -117,7 +125,8 @@ const config = {
   			'accordion-up': 'accordion-up 0.2s ease-out',
   			marquee: 'marquee var(--duration) infinite linear',
   			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
-  			meteor: 'meteor 5s linear infinite'
+  			meteor: 'meteor 5s linear infinite',
+  			grid: 'grid 15s linear infinite'
   		}
   	}
   },
