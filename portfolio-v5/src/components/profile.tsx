@@ -3,29 +3,42 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { DATA } from "@/data/resume";
 
-const BLUR_FADE_DELAY = 0.04;
-
 const ProfileCard = () => {
   return (
-    <Card className="w-full max-w-screen-lg shadow-lg">
-      <CardContent className="flex items-center gap-4">
-        <div>
-          <TextAnimate
-            animation="blurIn"
-            as="h1"
-            className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-black"
-          >
-            {`Hi, I'm ${DATA.name.split(" ")[0]} 👋`}
-          </TextAnimate>
-          <p className="text-gray-800 text-lg">{DATA.description}</p>
-        </div>
-        <Avatar className="size-28 border">
-          <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
-          <AvatarFallback>{DATA.initials}</AvatarFallback>
+    <Card className="w-full max-w-screen-lg text-white bg-gradient-to-r from-blue-50 to-indigo-200 dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-md overflow-hidden p-6">
+      <CardContent className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+        {/* Avatar Section */}
+        <Avatar className="size-32 border-4 border-white shadow-lg rounded-full">
+          <AvatarImage
+            alt={DATA.name}
+            src={DATA.avatarUrl}
+            className="rounded-full"
+          />
+          <AvatarFallback className="text-2xl font-semibold">
+            {DATA.initials}
+          </AvatarFallback>
         </Avatar>
+
+        {/* Text Section */}
+        <div className="text-center sm:text-left">
+          <TextAnimate
+            animation="fadeIn"
+            as="h1"
+            className="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white"
+          >
+            {`Hi, I'm ${DATA.name.split(" ")[0]}`}
+          </TextAnimate>
+          <TextAnimate
+            animation="fadeIn"
+            className="text-gray-700 text-lg sm:text-xl mt-2 leading-relaxed dark:text-gray-400"
+          >
+            {DATA.description}
+          </TextAnimate>
+        </div>
       </CardContent>
     </Card>
   );
 };
 
 export default ProfileCard;
+
