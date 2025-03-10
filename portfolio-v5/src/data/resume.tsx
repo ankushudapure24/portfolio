@@ -746,6 +746,37 @@ export const DATA2 = {
     }
   ],
 
+  certifications: [
+    {
+      title: "Machine Learning Certificate",
+      issuer: "Coursera (Stanford)",
+      date: "Jan 2024",
+      description:
+        "Completed ML course covering regression, neural networks, and SVMs.",
+    },
+    {
+      title: "AWS Certified Developer",
+      issuer: "Amazon Web Services",
+      date: "Dec 2023",
+      description: "Certified in AWS cloud services and deployment strategies.",
+    },
+  ],
+  achievements: [
+    {
+      title: "1st Place in Hackathon",
+      event: "TechFest 2023",
+      year: "2023",
+      description: "Developed an AI-powered chatbot for medical consultation.",
+    },
+    {
+      title: "Top 10 Finalist in CodeSprint",
+      event: "Google CodeSprint",
+      year: "2022",
+      description: "Built a scalable e-commerce recommendation system.",
+    },
+  ],
+
+
 
 
 } as const;

@@ -16,16 +16,18 @@ import { RetroGrid } from "@/components/magicui/retro-grid";
 import EducationItem from "@/components/education";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { ProjectCard } from "@/components/project-card-new";
+// import CertificationsAndAchievements from "@/components/CertificationAndAchivements";
+import Certification from "@/components/Certification";
+import Achievement from "@/components/Achivements";
 import { useState } from "react";
 import { motion } from "framer-motion";
-
 
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
-  const [showProjects, setShowProjects] =   useState(false);
+  const [showProjects, setShowProjects] = useState(false);
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-8">
+    <main className="flex flex-col min-h-[100dvh] space-y-8 md:w-[750px]">
       <section id="hero">
         <div className="relative flex-col flex flex-1 overflow-hidden">
           <Meteors />
@@ -170,7 +172,10 @@ const MyPage = () => {
       </section>
 
       <section id="hackathons">
-        <div className="relative w-full py-8 flex flex-col items-center">
+        <div
+          className="relative w-full py-8
+         flex flex-col items-center"
+        >
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-6 text-center py-12 ">
               <div className="space-y-3">
@@ -198,8 +203,24 @@ const MyPage = () => {
           </BlurFade>
         </div>
       </section>
-
-      <section id="others">
+      <section className="AchivementsAndCertification">
+        <div className="flex flex-col py-6 items-center">
+          <h1 className="font-bold text-xl mb-4">
+            Achievements and Certification
+          </h1>
+        </div>
+        <div className=" relative flex flex-col py-6 items-center">
+          {DATA2.certifications.map((cert, index) => (
+            <Certification key={index} {...cert} />
+          ))}
+        </div>
+        <div className="flex flex-col py-6 items-center">
+          {DATA2.achievements.map((achieve, index) => (
+            <Achievement key={index} {...achieve} />
+          ))}
+        </div>
+      </section>
+      {/* <section id="others">
         <div className="flex flex-col items-center justify-center gap-8">
           <h2 className="text-xl font-bold">
             Below are the testing components
@@ -224,13 +245,9 @@ const MyPage = () => {
         <div>
           <MenuDemo />
         </div>
-      </section>
+      </section> */}
     </main>
   );
 };
 
 export default MyPage;
-
-
-
-
