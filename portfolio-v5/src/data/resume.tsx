@@ -2,7 +2,7 @@ import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
 
 export const DATA = {
-  name: "Ankush Udapure",
+  name: "Dhillion Verma",
   initials: "AD",
   url: "https://dillion.io",
   location: "San Francisco, CA",
@@ -11,7 +11,7 @@ export const DATA = {
     "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on LinkedIn.",
   summary:
     "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
-  avatarUrl: "/ankush.png",
+  avatarUrl: "/me.png",
   skills: [
     "React",
     "Next.js",
@@ -698,52 +698,64 @@ export const DATA2 = {
   skills: [
     {
       name: "React",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" 
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
     },
     {
       name: "Next.js",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
     },
     {
       name: "Typescript",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/f/f5/Typescript.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/f/f5/Typescript.svg",
     },
     {
       name: "Node.js",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
     },
     {
       name: "Python",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
     },
     {
       name: "Go",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg",
     },
     {
       name: "Postgres",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
     },
     {
       name: "Docker",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg",
     },
     {
       name: "Kubernetes",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
     },
     {
       name: "Java",
-      icons_url: "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg",
     },
     {
       name: "C++",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg"
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg",
     },
     {
       name: "HTML5",
-      icons_url: "https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg"
-    }
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg",
+    },
   ],
 
   certifications: [
@@ -753,12 +765,16 @@ export const DATA2 = {
       date: "Jan 2024",
       description:
         "Completed ML course covering regression, neural networks, and SVMs.",
+      imageUrl:
+        "https://img.freepik.com/free-vector/gradient-elegant-certificate-template_23-2148973721.jpg?t=st=1741678806~exp=1741682406~hmac=058c411f8ac5423665e27c5d20280d4a30caee1836e6e4f25f711b1443c3888a&w=1380",
     },
     {
       title: "AWS Certified Developer",
       issuer: "Amazon Web Services",
       date: "Dec 2023",
       description: "Certified in AWS cloud services and deployment strategies.",
+      imageUrl:
+        "https://img.freepik.com/free-vector/certificate-template-with-elegant-elements_23-2148568461.jpg?t=st=1741679205~exp=1741682805~hmac=838da3d94900e21af2d41e47ed71b3fe1852dbb851e4b749dc9c0d72b2e79d05&w=1380",
     },
   ],
   achievements: [
@@ -775,8 +791,4 @@ export const DATA2 = {
       description: "Built a scalable e-commerce recommendation system.",
     },
   ],
-
-
-
-
 } as const;
