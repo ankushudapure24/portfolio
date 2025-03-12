@@ -28,12 +28,12 @@ export function HackathonCard({
       {/* Avatar Section */}
       <div className="flex flex-col justify-center items-center w-48 h-48">
         <div className="flex flex-col">
-        <Avatar className="size-14 border border-gray-200 dark:border-gray-600 shadow-md">
-          <AvatarImage src={image} alt={title} className="object-cover" />
-          <AvatarFallback className="text-lg font-bold text-gray-700 dark:text-gray-200">
-            {title[0]}
-          </AvatarFallback>
-        </Avatar>
+          <Avatar className="size-14 border border-gray-200 dark:border-gray-600 shadow-md">
+            <AvatarImage src={image} alt={title} className="object-cover" />
+            <AvatarFallback className="text-lg font-bold text-gray-700 dark:text-gray-200">
+              {title[0]}
+            </AvatarFallback>
+          </Avatar>
         </div>
 
         <div className="mt-3 text-center">
@@ -44,7 +44,7 @@ export function HackathonCard({
           )}
         </div>
       </div>
-      <div className="w-full pl-10 py-6 h-full">
+      <div className="w-full pl-6 py-6 h-full space-y-2">
         <h2 className="mt-1 text-lg font-semibold text-gray-900 dark:text-white">
           {title}
         </h2>
@@ -60,10 +60,10 @@ export function HackathonCard({
         )}
 
         {links && links.length > 0 && (
-          <div className="mt-3 flex flex-wrap justify-center gap-2">
+          <div className="mt-3 flex flex-wrap justify-center gap-3 pt-2">
             {links.map((link, idx) => (
               <Link href={link.href} key={idx} className="group">
-                <Badge className="px-2 py-1 text-xs bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition-all">
+                <Badge className="flex gap-2 px-2 py-1 text-xs bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition-all">
                   {link.icon} {link.title}
                 </Badge>
               </Link>

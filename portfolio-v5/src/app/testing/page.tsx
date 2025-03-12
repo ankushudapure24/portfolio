@@ -16,7 +16,9 @@ import Certification from "@/components/Certification";
 import Achievement from "@/components/Achivements";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { HackathonCard } from "@/components/hacathon-card-new";
+import { HackathonCard, HackathonGrid } from "@/components/hacathon-card-new";
+import Link from "next/link";
+import { Card } from "@/components/ui/card";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -32,7 +34,7 @@ const MyPage = () => {
       </section>
       <section id="about">
         <h2 className="text-xl font-bold mb-4 text-center"> About Me</h2>
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-100 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-100 p-5  dark:from-gray-900 dark:to-gray-800">
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
             <Markdown className="prose max-w-full text-pretty font-sans text-m text-muted-foreground dark:prose-invert">
               {DATA.summary}
@@ -100,14 +102,18 @@ const MyPage = () => {
                   My Projects
                 </div>
 
-                <TextAnimate
+                {/* <TextAnimate
                   animation="blurIn"
                   as="h2"
                   className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl"
                 >
                   Explore My Work
-                </TextAnimate>
-
+                </TextAnimate> */}
+                <div>
+                  <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
+                    Explore My Work
+                  </h2>
+                </div>
                 <TextAnimate
                   animation="fadeIn"
                   className="text-gray-600 dark:text-gray-300 md:text-lg lg:text-base/relaxed xl:text-lg/relaxed max-w-3xl mx-auto"
@@ -170,14 +176,19 @@ const MyPage = () => {
                 <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
                   Hackathons
                 </div>
-                <TextAnimate
+                {/* <TextAnimate
                   animation="blurIn"
                   as="h2"
                   className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl"
                 >
                   I like building things
-                </TextAnimate>
-                <TextAnimate>
+                </TextAnimate> */}
+                <div>
+                  <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
+                    I like building things
+                  </h2>
+                </div>
+                <TextAnimate className="text-gray-600 dark:text-gray-300 md:text-lg lg:text-base/relaxed xl:text-lg/relaxed max-w-3xl mx-auto">
                   {`During my time in university, I attended ${DATA.hackathons.length}+ hackathons. People from around the country would come together and build incredible things in 2-3 days. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.`}
                 </TextAnimate>
               </div>
@@ -233,6 +244,34 @@ const MyPage = () => {
             ))}
           </div>
           <BorderBeam />
+        </div>
+      </section>
+      <section id="contact">
+        <div className="flex flex-col items-center justify-center gap-6 px-6 py-16 text-center">
+          <BlurFade delay={BLUR_FADE_DELAY * 16}>
+            <div className="space-y-4">
+              <span className="inline-block rounded-full bg-foreground text-background px-4 py-1 text-sm font-medium">
+                Contact
+              </span>
+              <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+                Get in Touch
+              </h2>
+              <p className="max-w-2xl mx-auto text-muted-foreground text-lg md:text-xl">
+                Want to chat? Feel free to{" "}
+                <Link
+                  href={DATA.contact.social.X.url}
+                  className="text-blue-500 font-semibold hover:underline"
+                >
+                  drop me a DM on Twitter
+                </Link>
+                , and I&apos;ll respond as soon as I can. Please note that all
+                solicitations will be ignored.
+              </p>
+              <h2 className="text-4xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+                Get in Touch
+              </h2>
+            </div>
+          </BlurFade>
         </div>
       </section>
     </main>

@@ -776,6 +776,24 @@ export const DATA2 = {
       imageUrl:
         "https://img.freepik.com/free-vector/certificate-template-with-elegant-elements_23-2148568461.jpg?t=st=1741679205~exp=1741682805~hmac=838da3d94900e21af2d41e47ed71b3fe1852dbb851e4b749dc9c0d72b2e79d05&w=1380",
     },
+    {
+      title: "Data Science Specialization",
+      issuer: "Johns Hopkins University (Coursera)",
+      date: "Feb 2024",
+      description:
+        "Completed a comprehensive data science course covering data analysis, visualization, and machine learning.",
+      imageUrl:
+        "https://img.freepik.com/free-vector/minimal-certificate-template-design_23-2148896280.jpg?t=st=1741679606~exp=1741683206~hmac=bde2857e073c645874a0419c688fc7a6a16f46d741807590c9950d9739c7f279&w=1380",
+    },
+    {
+      title: "Google Cloud Associate Engineer",
+      issuer: "Google Cloud",
+      date: "Nov 2023",
+      description:
+        "Certified in managing and deploying applications on Google Cloud infrastructure.",
+      imageUrl:
+        "https://img.freepik.com/free-vector/elegant-certificate-template_23-2147962676.jpg?t=st=1741679806~exp=1741683406~hmac=cd70a2033db14d61b172527b2f2c3f9334b16f956504d0a10e5eb5b5e46b5466&w=1380",
+    },
   ],
   achievements: [
     {
