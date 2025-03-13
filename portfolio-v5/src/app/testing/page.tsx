@@ -16,16 +16,16 @@ import Certification from "@/components/Certification";
 import Achievement from "@/components/Achivements";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { HackathonCard, HackathonGrid } from "@/components/hacathon-card-new";
+import { HackathonCard} from "@/components/hacathon-card-new";
 import Link from "next/link";
-import { Card } from "@/components/ui/card";
+import { ContactCard } from "@/components/contact-card";
 
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
   const [showProjects, setShowProjects] = useState(false);
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-8 md:w-[680px] ">
+    <main className="fflex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
         <div className="relative flex-col flex flex-1 overflow-hidden">
           <Meteors />
@@ -253,7 +253,7 @@ const MyPage = () => {
               <span className="inline-block rounded-full bg-foreground text-background px-4 py-1 text-sm font-medium">
                 Contact
               </span>
-              <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+              <h2 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
                 Get in Touch
               </h2>
               <p className="max-w-2xl mx-auto text-muted-foreground text-lg md:text-xl">
@@ -267,11 +267,11 @@ const MyPage = () => {
                 , and I&apos;ll respond as soon as I can. Please note that all
                 solicitations will be ignored.
               </p>
-              <h2 className="text-4xl font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                Get in Touch
-              </h2>
             </div>
           </BlurFade>
+          <div className="grid items-center">
+            <ContactCard />
+          </div>
         </div>
       </section>
     </main>
