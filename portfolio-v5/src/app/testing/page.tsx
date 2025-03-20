@@ -23,36 +23,97 @@ import { ContactCard } from "@/components/contact-card";
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
+  const [hoveredImage, setHoveredImage] = useState("/uni.png"); // Default image
   const [showProjects, setShowProjects] = useState(false);
   return (
-    <main className="fflex flex-col min-h-[100dvh] space-y-10">
+    <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
-        <div className="relative flex-col flex flex-1 overflow-hidden">
+        <div className="relative flex flex-col overflow-hidden">
           <Meteors />
           <ProfileCard />
         </div>
       </section>
       <section id="about">
-        <h2 className="text-xl font-bold mb-4 text-center"> About Me</h2>
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-100 p-5  dark:from-gray-900 dark:to-gray-800">
-          <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <Markdown className="prose max-w-full text-pretty font-sans text-m text-muted-foreground dark:prose-invert">
-              {DATA.summary}
-            </Markdown>
-          </BlurFade>
-        </div>
+        {/* <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
+          {" "}
+          About Me
+        </h2> */}
       </section>
-      <section id="education">
-        <h2 className="text-xl font-bold mb-4">Education</h2>
-        <div className="space-y-4">
+      {/* <section id="education">
+        <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
+          Education
+        </h2>
+        <div className="space-y-4 flex flex-col justify-center items-center mb-8">
           {DATA.education.map((edu, index) => (
             <EducationItem key={index} {...edu} />
           ))}
         </div>
+      </section> */}
+      <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
+        Education
+      </h2>
+      {/* <section className="education">
+        <div className="flex flex-row rounded-3xl bg-gradient-to-r from-indigo-500 to-blue-500  bg-gray-900">
+          <div className="flex flex-col w-1/2 gap-12 m-10 ">
+            {DATA.education.map((edu, index) => (
+              <EducationItem key={index} {...edu} />
+            ))}
+          </div>
+          <div className="w-1/2 items-center justify-center grid">
+            <Image
+              src="/waterloo.png"
+              alt="Education"
+              width={620}
+              height={420}
+              className="object-contain"
+            />
+          </div>
+        </div>
+      </section> */}
+      <section className="education">
+        <div className="flex flex-row rounded-3xl bg-gradient-to-r from-indigo-500 to-blue-500 bg-gray-900">
+          {/* Left Side - Education Items */}
+          <div className="flex flex-col w-1/2 gap-6 m-10">
+            {DATA.education.map((edu: any, index: number) => (
+              <div
+                key={index}
+                onMouseEnter={() => setHoveredImage(edu.logoUrl)} // Change image on hover
+                onMouseLeave={() => setHoveredImage("/uni.png")} // Reset on hover out
+              >
+                <EducationItem {...edu} />
+              </div>
+            ))}
+          </div>
+
+          {/* Right Side - Dynamic Image */}
+          <div className="w-1/2 flex items-center justify-center">
+            <Image
+              src={hoveredImage}
+              alt="Education"
+              width={420}
+              height={320}
+              className="object-contain transition-all duration-300 ease-in-out"
+            />
+          </div>
+        </div>
       </section>
+
       <section id="work">
-        <h2 className="text-xl font-bold mb-4">Work Experince</h2>
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg">
+        <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
+          Work Experince
+        </h2>
+        <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+          <div className="absolute inset-0 z-0">
+            <RetroGrid />
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-10">
+            {DATA.work.map((job) => (
+              <WorkCard key={job.company} {...job} />
+            ))}
+          </div>
+          <BorderBeam />
+        </div>
+        {/* <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg gap-2 p-2 max-w-6xl ml-60">
           <Marquee pauseOnHover className="[--duration:15s] flex">
             {DATA.work.map((job) => (
               <WorkCard key={job.company} {...job} />
@@ -64,14 +125,43 @@ const MyPage = () => {
             ))}
           </Marquee>
           <BorderBeam />
+        </div> */}
+      </section>
+      <section id="skills">
+        <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
+          Skills
+        </h2>
+        <div className="relative flex w-full flex-col items-center justify-center rounded-lg gap-2 p-2 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
+          <Marquee reverse pauseOnHover className="[--duration:20s] flex">
+            {DATA2.skills.map((skill, index) => (
+              <div
+                key={index}
+                className="bg-white backdrop-blur-md border border-white/20 p-10 dark:bg-gray-800 rounded-lg flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300"
+              >
+                <Image
+                  src={skill.icons_url}
+                  alt={skill.name}
+                  width={50}
+                  height={50}
+                  className="mb-2"
+                />
+                <span className="text-sm font-medium">{skill.name}</span>
+              </div>
+            ))}
+          </Marquee>
         </div>
       </section>
-      <section id="skills" className="py-8">
-        <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+      <section
+        id="old-skills"
+        className=" flex flex-col py-8 items-center justify-center space-y-4 "
+      >
+        {/* <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
+          Skills
+        </div>
+        <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background max-w-6xl">
           <div className="absolute inset-0 z-0">
             <RetroGrid />
           </div>
-          <h2 className="text-xl font-bold mb-4">Skills</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-10">
             {DATA2.skills.map((skill, index) => (
               <div
@@ -90,7 +180,7 @@ const MyPage = () => {
             ))}
           </div>
           <BorderBeam />
-        </div>
+        </div> */}
       </section>
 
       <section id="projects">
@@ -101,14 +191,6 @@ const MyPage = () => {
                 <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
                   My Projects
                 </div>
-
-                {/* <TextAnimate
-                  animation="blurIn"
-                  as="h2"
-                  className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl"
-                >
-                  Explore My Work
-                </TextAnimate> */}
                 <div>
                   <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
                     Explore My Work
@@ -195,7 +277,7 @@ const MyPage = () => {
             </div>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <ul className="mb-4 ml-4 divide-y divide-dashed border-l">
+            <ul className="mb-4 ml-80 divide-y divide-dashed border-l items-center">
               {DATA.hackathons.map((project, id) => (
                 <BlurFade
                   key={project.title + project.dates}
@@ -233,7 +315,7 @@ const MyPage = () => {
       </section>
       <section id="Achivements">
         <div className="flex flex-col py-6 items-center">
-          <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
+          <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md ">
             Achievements
           </div>
         </div>

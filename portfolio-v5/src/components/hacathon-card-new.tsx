@@ -24,7 +24,7 @@ export function HackathonCard({
   links,
 }: Props) {
   return (
-    <div className="flex overflow-hidden ease-out h-full gap-4 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg">
+    <div className="flex overflow-hidden ease-out h-full gap-8 max-w-screen-lg rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg">
       {/* Avatar Section */}
       <div className="flex flex-col justify-center items-center w-48 h-48">
         <div className="flex flex-col">

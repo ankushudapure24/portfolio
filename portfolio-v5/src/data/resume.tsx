@@ -159,7 +159,6 @@ export const DATA = {
       degree: "Bachelor's Degree of Computer Science (BCS)",
       logoUrl: "/waterloo.png",
       start: "2016",
-      end: "2021",
     },
     {
       school: "Wilfrid Laurier University",
@@ -177,6 +176,7 @@ export const DATA = {
       start: "2012",
       end: "2016",
     },
+    
   ],
   projects: [
     {
