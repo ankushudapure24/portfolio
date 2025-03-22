@@ -3,10 +3,8 @@ import { TextAnimate } from "@/components/magicui/text-animate";
 import BlurFade from "@/components/magicui/blur-fade";
 import { DATA, DATA2 } from "@/data/resume";
 import { Marquee } from "@/components/magicui/marquee";
-import WorkCard from "@/components/ui/marquee-test";
+import WorkCard from "@/components/WorkCard";
 import ProfileCard from "@/components/profile";
-import { Meteors } from "@/components/magicui/meteors";
-import Markdown from "react-markdown";
 import Image from "next/image";
 import { RetroGrid } from "@/components/magicui/retro-grid";
 import EducationItem from "@/components/education";
@@ -19,19 +17,35 @@ import { motion } from "framer-motion";
 import { HackathonCard} from "@/components/hacathon-card-new";
 import Link from "next/link";
 import { ContactCard } from "@/components/contact-card";
+import ParticlesDemo from "@/components/Partiles";
+import { Meteors } from "@/components/magicui/meteors";
+
 
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
   const [hoveredImage, setHoveredImage] = useState("/uni.png"); // Default image
   const [showProjects, setShowProjects] = useState(false);
+  const companies = ["/Vector.png", "/Vector.png", "/Vector.png", "/Vector.png"];
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
         <div className="relative flex flex-col overflow-hidden">
-          <Meteors />
+          {/* <Meteors /> */}
           <ProfileCard />
         </div>
+        <Marquee>
+          {companies.concat(companies).map((logo, index) => (
+            <Image
+              key={index}
+              src={logo}
+              alt={`Logo ${index}`}
+              width={30} // Adjust size as needed
+              height={30}
+              className="logo"
+            />
+          ))}
+        </Marquee>
       </section>
       <section id="about">
         {/* <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
@@ -102,7 +116,7 @@ const MyPage = () => {
         <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
           Work Experince
         </h2>
-        <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+        <div className="relative flex p-6 w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
           <div className="absolute inset-0 z-0">
             <RetroGrid />
           </div>
@@ -151,40 +165,9 @@ const MyPage = () => {
           </Marquee>
         </div>
       </section>
-      <section
-        id="old-skills"
-        className=" flex flex-col py-8 items-center justify-center space-y-4 "
-      >
-        {/* <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
-          Skills
-        </div>
-        <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background max-w-6xl">
-          <div className="absolute inset-0 z-0">
-            <RetroGrid />
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-10">
-            {DATA2.skills.map((skill, index) => (
-              <div
-                key={index}
-                className="bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-lg flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300"
-              >
-                <Image
-                  src={skill.icons_url}
-                  alt={skill.name}
-                  width={50}
-                  height={50}
-                  className="mb-2"
-                />
-                <span className="text-sm font-medium">{skill.name}</span>
-              </div>
-            ))}
-          </div>
-          <BorderBeam />
-        </div> */}
-      </section>
 
       <section id="projects">
-        <div className="relative w-full py-8 flex flex-col items-center">
+        <div className="relative w-full py-8 flex flex-col items-center rounded-3xl">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-6 text-center py-12">
               <div className="space-y-3">
@@ -253,7 +236,7 @@ const MyPage = () => {
       <section id="hackathons">
         <div className="space-y-12 w-full py-8">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center bg-white">
               <div className="space-y-2">
                 <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
                   Hackathons
@@ -277,7 +260,7 @@ const MyPage = () => {
             </div>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <ul className="mb-4 ml-80 divide-y divide-dashed border-l items-center">
+            <div className="space-y-4 divide-dashed flex flex-col items-center">
               {DATA.hackathons.map((project, id) => (
                 <BlurFade
                   key={project.title + project.dates}
@@ -293,24 +276,24 @@ const MyPage = () => {
                   />
                 </BlurFade>
               ))}
-            </ul>
+            </div>
           </BlurFade>
         </div>
       </section>
       <section className="Certification">
         <div className="flex flex-col py-4 items-center">
-          <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
+          <div className="inline-block rounded-full bg-black text-white  dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
             Certificates
           </div>
         </div>
-        <div className="relative overflow-hidden bg-gradient-to-r from-blue-50 to-indigo-100 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
-          <div className="flex flex-col items-center">
+        <div className="relative overflow-hidden flex flex-col items-center bg-gradient-to-r from-indigo-700 to-blue-500 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
+          <div className="flex flex-col items-center my-10 max-w-6xl">
             {DATA2.certifications.map((cert, index) => (
               <Certification key={index} {...cert} />
             ))}
           </div>
 
-          <BorderBeam />
+          {/* <BorderBeam /> */}
         </div>
       </section>
       <section id="Achivements">
@@ -319,8 +302,8 @@ const MyPage = () => {
             Achievements
           </div>
         </div>
-        <div className="relative overflow-hidden bg-gradient-to-r from-blue-50 to-indigo-100 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
-          <div className="flex flex-col py-6 items-center">
+        <div className="relative overflow-hidden flex flex-col items-center bg-gradient-to-r from-indigo-700 to-blue-500 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
+          <div className="flex flex-col items-center my-10 max-w-6xl">
             {DATA2.achievements.map((achieve, index) => (
               <Achievement key={index} {...achieve} />
             ))}

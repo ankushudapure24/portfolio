@@ -66,7 +66,7 @@ export default function RootLayout({
           <TooltipProvider delayDuration={0}>
             {children}
             <NavbarTop />
-            {/* <Navbar /> */}
+            <Navbar />
           </TooltipProvider>
         </ThemeProvider>
       </body>

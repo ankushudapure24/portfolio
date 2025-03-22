@@ -21,9 +21,9 @@ const WorkCard = ({
   return (
     <figure
       className={cn(
-        "relative w-72 cursor-pointer overflow-hidden rounded-xl border p-4 flex items-center gap-4",
+        "relative w-72 h-52 cursor-pointer overflow-hidden rounded-xl border p-4 flex flex-col items-center gap-4",
         // Light mode styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        "border-gray-950/[.1] bg-white hover:bg-gray-950/[.05]",
         // Dark mode styles
         "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
       )}

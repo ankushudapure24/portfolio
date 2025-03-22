@@ -1,10 +1,12 @@
 import Image from "next/image";
+import { useState } from "react";
+
 interface CertificationProps {
   title: string;
   issuer: string;
   date: string;
   description: string;
-  imageUrl: string; // New prop for the image
+  imageUrl?: string; // Optional prop
 }
 
 const Certification: React.FC<CertificationProps> = ({
@@ -14,10 +16,12 @@ const Certification: React.FC<CertificationProps> = ({
   description,
   imageUrl,
 }) => {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <div className="flex bg-white shadow-lg rounded-lg p-4 mb-4 w-full dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]">
       {/* Left Content */}
-      <div className="flex-1 pr-4 ">
+      <div className="flex-1 pr-4">
         <h3 className="text-lg text-blue-800 font-semibold dark:text-white">
           {title}
         </h3>
@@ -28,16 +32,19 @@ const Certification: React.FC<CertificationProps> = ({
         <p className="mt-2 text-gray-700 dark:text-gray-300">{description}</p>
       </div>
 
-      {/* Right Image */}
-      <div className="flex-shrink-0">
-        <Image
-          src={imageUrl}
-          alt={title}
-          width={100}
-          height={80}
-          className="rounded-lg shadow-md"
-        />
-      </div>
+      {/* Right Image (Only Render if imageUrl is valid) */}
+      {!imageError && imageUrl && (
+        <div className="flex-shrink-0">
+          <Image
+            src={imageUrl}
+            alt={title}
+            width={100}
+            height={80}
+            className="rounded-lg shadow-md"
+            onError={() => setImageError(true)} // Hide image if there's an error
+          />
+        </div>
+      )}
     </div>
   );
 };

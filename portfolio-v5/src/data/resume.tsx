@@ -143,6 +143,31 @@ export const DATA = {
       description:
         "Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener",
     },
+    {
+      company: "Mitre Media",
+      href: "https://mitremedia.com/",
+      badges: [],
+      location: "Toronto, ON",
+      title: "Software Engineer",
+      logoUrl: "/mitremedia.png",
+      start: "May 2017",
+      end: "August 2017",
+      description:
+        "Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener",
+    },
+    {
+      company: "Mitre Media",
+      href: "https://mitremedia.com/",
+      badges: [],
+      location: "Toronto, ON",
+      title: "Software Engineer",
+      logoUrl: "/mitremedia.png",
+      start: "May 2017",
+      end: "August 2017",
+      description:
+        "Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener",
+    },
+    
   ],
   education: [
     {
@@ -176,7 +201,6 @@ export const DATA = {
       start: "2012",
       end: "2016",
     },
-    
   ],
   projects: [
     {
@@ -791,8 +815,6 @@ export const DATA2 = {
       date: "Nov 2023",
       description:
         "Certified in managing and deploying applications on Google Cloud infrastructure.",
-      imageUrl:
-        "https://img.freepik.com/free-vector/elegant-certificate-template_23-2147962676.jpg?t=st=1741679806~exp=1741683406~hmac=cd70a2033db14d61b172527b2f2c3f9334b16f956504d0a10e5eb5b5e46b5466&w=1380",
     },
   ],
   achievements: [
