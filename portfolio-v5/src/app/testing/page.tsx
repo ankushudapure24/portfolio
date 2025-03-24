@@ -34,18 +34,20 @@ const MyPage = () => {
           {/* <Meteors /> */}
           <ProfileCard />
         </div>
-        <Marquee>
-          {companies.concat(companies).map((logo, index) => (
-            <Image
-              key={index}
-              src={logo}
-              alt={`Logo ${index}`}
-              width={30} // Adjust size as needed
-              height={30}
-              className="logo"
-            />
-          ))}
-        </Marquee>
+        <div className="bg-white">
+          <Marquee>
+            {companies.concat(companies).map((logo, index) => (
+              <Image
+                key={index}
+                src={logo}
+                alt={`Logo ${index}`}
+                width={30} // Adjust size as needed
+                height={30}
+                className="logo dark:bg-white"
+              />
+            ))}
+          </Marquee>
+        </div>
       </section>
       <section id="about">
         {/* <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
@@ -191,14 +193,14 @@ const MyPage = () => {
           </BlurFade>
 
           <motion.div
-            className="relative overflow-hidden transition-all w-full max-w-[800px]"
+            className="relative overflow-hidden transition-all w-full"
             style={{
               maxHeight: showProjects ? "1000px" : "400px",
             }}
             animate={{ maxHeight: showProjects ? "1280px" : "400px" }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
           >
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               {DATA.projects.map((project, id) => (
                 <BlurFade
                   key={project.title}
@@ -236,9 +238,9 @@ const MyPage = () => {
       <section id="hackathons">
         <div className="space-y-12 w-full py-8">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center bg-white">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
+                <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
                   Hackathons
                 </div>
                 {/* <TextAnimate
@@ -260,7 +262,7 @@ const MyPage = () => {
             </div>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <div className="space-y-4 divide-dashed flex flex-col items-center">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 m-20 gap-4 items-center">
               {DATA.hackathons.map((project, id) => (
                 <BlurFade
                   key={project.title + project.dates}
@@ -282,11 +284,11 @@ const MyPage = () => {
       </section>
       <section className="Certification">
         <div className="flex flex-col py-4 items-center">
-          <div className="inline-block rounded-full bg-black text-white  dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
+          <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
             Certificates
           </div>
         </div>
-        <div className="relative overflow-hidden flex flex-col items-center bg-gradient-to-r from-indigo-700 to-blue-500 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
+        <div className="relative overflow-hidden m-12 flex flex-col items-center bg-gradient-to-r from-indigo-700 to-blue-500 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
           <div className="flex flex-col items-center my-10 max-w-6xl">
             {DATA2.certifications.map((cert, index) => (
               <Certification key={index} {...cert} />

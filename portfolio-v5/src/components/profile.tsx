@@ -12,8 +12,8 @@ const BLUR_FADE_DELAY = 0.04;
 const ProfileCard = () => {
   return (
     <>
-      <Card className="w-full text-white bg-gradient-to-b from-yellow-300 to-yellow-200  dark:bg-gradient-to-r dark:from-gray-900 dark:to-gray-800 overflow-hidden">
-        
+      <Card className="w-full text-white bg-black overflow-hidden">
+        <div className="absolute inset-1 bottom-40 bg-[url('/pattern.svg')] bg-left-top bg-transparent opacity-50"></div>
         <CardContent className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 p-6">
           {/* Avatar Section */}
 
@@ -29,13 +29,13 @@ const ProfileCard = () => {
             <TextAnimate
               animation="fadeIn"
               as="h1"
-              className="text-4xl font-inter sm:text-5xl xl:text-8xl font-extrabold tracking-tight text-center text-gray-900 dark:text-white"
+              className="text-4xl font-inter sm:text-5xl xl:text-8xl font-extrabold tracking-tight text-center bg-gradient-to-b from-[#4362ff] to-[#06081e] bg-clip-text text-transparent"
             >
               {`Hi, I'm ${DATA.name.split(" ")[0]}`}
             </TextAnimate>
             <TextAnimate
               animation="fadeIn"
-              className="text-black/80 text-lg md:text-2xl font-semibold drop-shadow-md transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn sm:text-xl mt-2 leading-relaxed dark:text-gray-400 py-4"
+              className="text-gray-400 text-lg md:text-2xl font-semibold drop-shadow-md transition-opacity duration-700 ease-in-out opacity-0 animate-fadeIn sm:text-xl mt-2 leading-relaxed dark:text-gray-400 py-4"
             >
               {DATA.description}
             </TextAnimate>

@@ -1,40 +1,60 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { useTheme } from "next-themes";
-
-
-import { useState, ChangeEvent, FormEvent } from 'react';
+import { useState, ChangeEvent, FormEvent } from "react";
 
 interface FormData {
   name: string;
   email: string;
   message: string;
 }
-  
+
 export function ContactCard() {
-    const [formData, setFormData] = useState<FormData>({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [submitted, setSubmitted] = useState<boolean>(false);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  // CAPTCHA state
+  const [num1, setNum1] = useState(Math.floor(Math.random() * 10) + 1);
+  const [num2, setNum2] = useState(Math.floor(Math.random() * 10) + 1);
+  const [captchaAnswer, setCaptchaAnswer] = useState("");
+  const [captchaValid, setCaptchaValid] = useState(false);
+
+  const correctAnswer = num1 + num2;
+
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleCaptchaChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setCaptchaAnswer(e.target.value);
+    setCaptchaValid(parseInt(e.target.value) === correctAnswer);
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission logic (e.g., API call)
-    console.log('Form Data:', formData);
+    if (!captchaValid) {
+      alert("CAPTCHA incorrect. Try again.");
+      return;
+    }
+
+    console.log("Form Data:", formData);
     setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: "", email: "", message: "" });
+
+    // Reset CAPTCHA
+    setNum1(Math.floor(Math.random() * 10) + 1);
+    setNum2(Math.floor(Math.random() * 10) + 1);
+    setCaptchaAnswer("");
+    setCaptchaValid(false);
   };
 
   const { theme } = useTheme();
@@ -80,9 +100,30 @@ export function ContactCard() {
               className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
+
+            {/* CAPTCHA */}
+            <div className="flex items-center space-x-2">
+              <span>
+                {num1} + {num2} =
+              </span>
+              <input
+                type="number"
+                placeholder="Answer"
+                required
+                className="w-16 p-2 border rounded-lg"
+                value={captchaAnswer}
+                onChange={handleCaptchaChange}
+              />
+            </div>
+
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition duration-300"
+              disabled={!captchaValid}
+              className={`w-full p-3 rounded-lg ${
+                captchaValid
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-300 text-gray-600"
+              }`}
             >
               Send Message
             </button>
