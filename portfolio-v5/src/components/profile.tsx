@@ -41,9 +41,9 @@ const ProfileCard = () => {
             </TextAnimate>
           </div>
         </CardContent>
-        <div className=" p-8 mt-16 rounded-tr-3xl rounded-tl-3xl bg-white border-gray-500 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+        <div className=" p-8 mt-4 rounded-tr-3xl rounded-tl-3xl bg-white border-gray-500 dark:from-gray-900 dark:to-gray-800 overflow-hidden">
           <BlurFade delay={BLUR_FADE_DELAY * 4}>
-            <Markdown className="prose max-w-full text-pretty font-sans text-2xl text-muted-foreground">
+            <Markdown className="prose max-w-full text-pretty font-sans sm:text-sm md:text:xl xl:text-2xl text-muted-foreground">
               {DATA.summary}
             </Markdown>
           </BlurFade>

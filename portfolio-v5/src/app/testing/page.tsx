@@ -55,41 +55,14 @@ const MyPage = () => {
           About Me
         </h2> */}
       </section>
-      {/* <section id="education">
-        <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
-          Education
-        </h2>
-        <div className="space-y-4 flex flex-col justify-center items-center mb-8">
-          {DATA.education.map((edu, index) => (
-            <EducationItem key={index} {...edu} />
-          ))}
-        </div>
-      </section> */}
+
       <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
         Education
       </h2>
-      {/* <section className="education">
-        <div className="flex flex-row rounded-3xl bg-gradient-to-r from-indigo-500 to-blue-500  bg-gray-900">
-          <div className="flex flex-col w-1/2 gap-12 m-10 ">
-            {DATA.education.map((edu, index) => (
-              <EducationItem key={index} {...edu} />
-            ))}
-          </div>
-          <div className="w-1/2 items-center justify-center grid">
-            <Image
-              src="/waterloo.png"
-              alt="Education"
-              width={620}
-              height={420}
-              className="object-contain"
-            />
-          </div>
-        </div>
-      </section> */}
-      <section className="education">
-        <div className="flex flex-row rounded-3xl bg-gradient-to-r from-indigo-500 to-blue-500 bg-gray-900">
+      <section className="education px-2 sm:px-6 md:px-10">
+        <div className="flex flex-col md:flex-row sm:ml-4 rounded-3xl bg-gradient-to-r from-indigo-500 to-blue-500 bg-gray-900">
           {/* Left Side - Education Items */}
-          <div className="flex flex-col w-1/2 gap-6 m-10">
+          <div className="flex flex-col md:w-1/2 gap-6 m-6 sm:m-10">
             {DATA.education.map((edu: any, index: number) => (
               <div
                 key={index}
@@ -101,8 +74,7 @@ const MyPage = () => {
             ))}
           </div>
 
-          {/* Right Side - Dynamic Image */}
-          <div className="w-1/2 flex items-center justify-center">
+          <div className="hidden md:flex w-1/2 items-center justify-center">
             <Image
               src={hoveredImage}
               alt="Education"
@@ -114,35 +86,26 @@ const MyPage = () => {
         </div>
       </section>
 
-      <section id="work">
-        <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
-          Work Experince
+      <section id="work" className="w-full px-4 sm:px-6 md:px-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
+          Work Experience
         </h2>
+
         <div className="relative flex p-6 w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
           <div className="absolute inset-0 z-0">
             <RetroGrid />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4 md:px-10">
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 px-2 sm:px-4 md:px-8 z-10">
             {DATA.work.map((job) => (
               <WorkCard key={job.company} {...job} />
             ))}
           </div>
+
           <BorderBeam />
         </div>
-        {/* <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg gap-2 p-2 max-w-6xl ml-60">
-          <Marquee pauseOnHover className="[--duration:15s] flex">
-            {DATA.work.map((job) => (
-              <WorkCard key={job.company} {...job} />
-            ))}
-          </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s] flex">
-            {DATA.work.map((job) => (
-              <WorkCard key={job.company} {...job} />
-            ))}
-          </Marquee>
-          <BorderBeam />
-        </div> */}
       </section>
+
       <section id="skills">
         <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
           Skills
@@ -282,22 +245,24 @@ const MyPage = () => {
           </BlurFade>
         </div>
       </section>
-      <section className="Certification">
+      <section className="Certification relative">
         <div className="flex flex-col py-4 items-center">
           <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
             Certificates
           </div>
         </div>
-        <div className="relative overflow-hidden m-12 flex flex-col items-center bg-gradient-to-r from-indigo-700 to-blue-500 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
-          <div className="flex flex-col items-center my-10 max-w-6xl">
+
+        <div className="relative overflow-hidden m-12 flex flex-col items-center bg-black p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
+          <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-cover opacity-80 "></div>
+
+          <div className="relative flex flex-col items-center my-10 max-w-6xl z-10">
             {DATA2.certifications.map((cert, index) => (
               <Certification key={index} {...cert} />
             ))}
           </div>
-
-          {/* <BorderBeam /> */}
         </div>
       </section>
+
       <section id="Achivements">
         <div className="flex flex-col py-6 items-center">
           <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md ">

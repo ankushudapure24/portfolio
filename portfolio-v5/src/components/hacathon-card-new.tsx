@@ -37,8 +37,8 @@ export function HackathonCard({
 
   return (
     <div
-      className={`relative flex flex-col items-center overflow-hidden w-[320px] h-[320px] min-h-[320px] hover:h-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-md transition-all duration-300 ${
-        isOverflowing ? " hover:h-auto" : "h-auto"
+      className={`relative flex flex-col items-center overflow-hidden w-[320px] h-[320px] min-h-[360px] hover:h-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-md transition-all duration-300 ${
+        isOverflowing ? " hover:h-auto" : "h-[360px]"
       }`}
     >
       {/* Avatar Section */}
@@ -64,22 +64,22 @@ export function HackathonCard({
           isOverflowing ? "h-[160px] hover:h-auto" : "h-auto"
         }`}
       >
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <h2 className="text-lg text-center font-semibold text-gray-900 dark:text-white">
           {title}
         </h2>
         {location && (
-          <p className="text-sm text-gray-600 dark:text-gray-400">
+          <p className="text-sm text-center text-gray-600 dark:text-gray-400">
             📍 {location}
           </p>
         )}
-        <p className="mt-2 text-xs text-gray-700 dark:text-gray-300">
+        <p className="mt-2 text-center text-xs text-gray-700 dark:text-gray-300">
           {description}
         </p>
       </div>
 
       {/* Links */}
       {links && links.length > 0 && (
-        <div className="flex flex-wrap justify-center gap-2 p-4">
+        <div className="flex flex-wrap justify-center gap-2 p-4 mb-4">
           {links.map((link, idx) => (
             <Link href={link.href} key={idx} className="group">
               <Badge className="flex gap-2 px-2 py-1 text-xs bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-300 hover:bg-blue-600 hover:text-white transition-all">
