@@ -14,19 +14,23 @@ import Certification from "@/components/Certification";
 import Achievement from "@/components/Achivements";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { HackathonCard} from "@/components/hacathon-card-new";
+import { HackathonCard } from "@/components/hacathon-card-new";
 import Link from "next/link";
 import { ContactCard } from "@/components/contact-card";
 import ParticlesDemo from "@/components/Partiles";
 import { Meteors } from "@/components/magicui/meteors";
 
-
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
-  const [hoveredImage, setHoveredImage] = useState("/uni.png"); // Default image
+  const [hoveredImage, setHoveredImage] = useState("/uni.png"); 
   const [showProjects, setShowProjects] = useState(false);
-  const companies = ["/Vector.png", "/Vector.png", "/Vector.png", "/Vector.png"];
+  const companies = [
+    "/Vector.png",
+    "/Vector.png",
+    "/Vector.png",
+    "/Vector.png",
+  ];
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
@@ -49,19 +53,13 @@ const MyPage = () => {
           </Marquee>
         </div>
       </section>
-      <section id="about">
-        {/* <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
-          {" "}
-          About Me
-        </h2> */}
-      </section>
+      <section id="about"></section>
 
       <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
         Education
       </h2>
       <section className="education px-2 sm:px-6 md:px-10">
         <div className="flex flex-col md:flex-row sm:ml-4 rounded-3xl bg-gradient-to-r from-indigo-500 to-blue-500 bg-gray-900">
-          {/* Left Side - Education Items */}
           <div className="flex flex-col md:w-1/2 gap-6 m-6 sm:m-10">
             {DATA.education.map((edu: any, index: number) => (
               <div
@@ -206,13 +204,7 @@ const MyPage = () => {
                 <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
                   Hackathons
                 </div>
-                {/* <TextAnimate
-                  animation="blurIn"
-                  as="h2"
-                  className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100 sm:text-5xl"
-                >
-                  I like building things
-                </TextAnimate> */}
+
                 <div>
                   <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
                     I like building things
@@ -225,7 +217,7 @@ const MyPage = () => {
             </div>
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 m-20 gap-4 items-center">
+            <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 m-5 sm:m-10 gap-4 items-center">
               {DATA.hackathons.map((project, id) => (
                 <BlurFade
                   key={project.title + project.dates}
