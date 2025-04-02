@@ -25,6 +25,7 @@ const BLUR_FADE_DELAY = 0.04;
 const MyPage = () => {
   const [hoveredImage, setHoveredImage] = useState("/uni.png"); 
   const [showProjects, setShowProjects] = useState(false);
+  const [showAll, setShowAll] = useState(false);
   const companies = [
     "/Vector.png",
     "/Vector.png",
@@ -38,7 +39,7 @@ const MyPage = () => {
           {/* <Meteors /> */}
           <ProfileCard />
         </div>
-        <div className="bg-white">
+        {/* <div className="bg-white">
           <Marquee>
             {companies.concat(companies).map((logo, index) => (
               <Image
@@ -51,7 +52,7 @@ const MyPage = () => {
               />
             ))}
           </Marquee>
-        </div>
+        </div> */}
       </section>
       <section id="about"></section>
 
@@ -59,7 +60,7 @@ const MyPage = () => {
         Education
       </h2>
       <section className="education px-2 sm:px-6 md:px-10">
-        <div className="flex flex-col md:flex-row sm:ml-4 rounded-3xl bg-gradient-to-r from-indigo-500 to-blue-500 bg-gray-900">
+        <div className="flex flex-col md:flex-row sm:ml-4 rounded-3xl bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 bg-gray-900">
           <div className="flex flex-col md:w-1/2 gap-6 m-6 sm:m-10">
             {DATA.education.map((edu: any, index: number) => (
               <div
@@ -118,8 +119,8 @@ const MyPage = () => {
                 <Image
                   src={skill.icons_url}
                   alt={skill.name}
-                  width={50}
-                  height={50}
+                  width={30}
+                  height={30}
                   className="mb-2"
                 />
                 <span className="text-sm font-medium">{skill.name}</span>
@@ -156,12 +157,12 @@ const MyPage = () => {
           <motion.div
             className="relative overflow-hidden transition-all w-full"
             style={{
-              maxHeight: showProjects ? "1000px" : "400px",
+              maxHeight: showProjects ? "none" : "400px",
             }}
-            animate={{ maxHeight: showProjects ? "1280px" : "400px" }}
+            animate={{ maxHeight: showProjects ? "1200px" : "400px" }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
           >
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3">
               {DATA.projects.map((project, id) => (
                 <BlurFade
                   key={project.title}
@@ -204,7 +205,6 @@ const MyPage = () => {
                 <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
                   Hackathons
                 </div>
-
                 <div>
                   <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
                     I like building things
@@ -218,50 +218,67 @@ const MyPage = () => {
           </BlurFade>
           <BlurFade delay={BLUR_FADE_DELAY * 14}>
             <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 m-5 sm:m-10 gap-4 items-center">
-              {DATA.hackathons.map((project, id) => (
-                <BlurFade
-                  key={project.title + project.dates}
-                  delay={BLUR_FADE_DELAY * 15 + id * 0.05}
-                >
-                  <HackathonCard
-                    title={project.title}
-                    description={project.description}
-                    location={project.location}
-                    dates={project.dates}
-                    image={project.image}
-                    links={project.links}
-                  />
-                </BlurFade>
-              ))}
+              {DATA.hackathons
+                .slice(0, showAll ? DATA.hackathons.length : 8)
+                .map((project, id) => (
+                  <BlurFade
+                    key={project.title + project.dates}
+                    delay={BLUR_FADE_DELAY * 15 + id * 0.05}
+                  >
+                    <HackathonCard
+                      title={project.title}
+                      description={project.description}
+                      location={project.location}
+                      dates={project.dates}
+                      image={project.image}
+                      links={project.links}
+                    />
+                  </BlurFade>
+                ))}
             </div>
+            {DATA.hackathons.length > 8 && (
+              <div className="flex justify-center mt-4">
+                <button
+                  className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                  onClick={() => setShowAll(!showAll)}
+                >
+                  {showAll ? "Show Less" : "Show All"}
+                </button>
+              </div>
+            )}
           </BlurFade>
         </div>
       </section>
+
       <section className="Certification relative">
         <div className="flex flex-col py-4 items-center">
-          <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
+          <div className="iinline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
             Certificates
           </div>
         </div>
 
-        <div className="relative overflow-hidden m-12 flex flex-col items-center bg-black p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
-          <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-cover opacity-80 "></div>
-
-          <div className="relative flex flex-col items-center my-10 max-w-6xl z-10">
+        <div className="relative overflow-hidden m-12 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
+          <div
+            className="relative flex flex-row gap-4 h-full items-center my-6 max-w-7xl z-10"
+            style={{ scrollbarWidth: "none" }}
+          >
             {DATA2.certifications.map((cert, index) => (
               <Certification key={index} {...cert} />
             ))}
           </div>
+          <BorderBeam />
         </div>
       </section>
 
       <section id="Achivements">
         <div className="flex flex-col py-6 items-center">
-          <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md ">
+          <div className="iinline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
             Achievements
           </div>
         </div>
-        <div className="relative overflow-hidden flex flex-col items-center bg-gradient-to-r from-indigo-700 to-blue-500 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
+        <div className="relative overflow-hidden flex flex-col m-12 items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-5 rounded-3xl dark:from-black shadow-md">
+          {/* <div className="absolute inset-1 bg-[url('/pattern.svg')] bg-cover opacity-80 "></div> */}
+
           <div className="flex flex-col items-center my-10 max-w-6xl">
             {DATA2.achievements.map((achieve, index) => (
               <Achievement key={index} {...achieve} />

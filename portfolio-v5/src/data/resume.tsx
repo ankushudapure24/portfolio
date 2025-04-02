@@ -2,7 +2,7 @@ import { Icons } from "@/components/icons";
 import { HomeIcon, NotebookIcon } from "lucide-react";
 
 export const DATA = {
-  name: "Dillion Verma",
+  name: "Ankush Udapure",
   initials: "AD",
   url: "https://dillion.io",
   location: "San Francisco, CA",
@@ -11,7 +11,7 @@ export const DATA = {
     "Software Engineer turned Entrepreneur. I love building things and helping people. Very active on LinkedIn.",
   summary:
     "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
-  avatarUrl: "/me.png",
+  avatarUrl: "/mee.png",
   skills: [
     "React",
     "Next.js",
@@ -694,22 +694,22 @@ export const DATA = {
         },
       ],
     },
-    {
-      title: "Portal Hackathon",
-      dates: "October 29, 2016",
-      location: "Kingston, Ontario",
-      description:
-        "Developed an internal widget for uploading assignments using Waterloo's portal app",
-      image:
-        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/portal-hackathon.png",
-      links: [
-        {
-          title: "Source",
-          icon: <Icons.github className="h-4 w-4" />,
-          href: "https://github.com/UWPortalSDK/crowmark",
-        },
-      ],
-    },
+    // {
+    //   title: "Portal Hackathon",
+    //   dates: "October 29, 2016",
+    //   location: "Kingston, Ontario",
+    //   description:
+    //     "Developed an internal widget for uploading assignments using Waterloo's portal app",
+    //   image:
+    //     "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/portal-hackathon.png",
+    //   links: [
+    //     {
+    //       title: "Source",
+    //       icon: <Icons.github className="h-4 w-4" />,
+    //       href: "https://github.com/UWPortalSDK/crowmark",
+    //     },
+    //   ],
+    // },
   ],
 } as const;
 
@@ -809,6 +809,7 @@ export const DATA2 = {
       imageUrl:
         "https://img.freepik.com/free-vector/minimal-certificate-template-design_23-2148896280.jpg?t=st=1741679606~exp=1741683206~hmac=bde2857e073c645874a0419c688fc7a6a16f46d741807590c9950d9739c7f279&w=1380",
     },
+    
     {
       title: "Google Cloud Associate Engineer",
       issuer: "Google Cloud",

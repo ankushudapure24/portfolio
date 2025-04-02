@@ -102,7 +102,7 @@ export function ContactCard() {
             />
 
             {/* CAPTCHA */}
-            <div className="flex items-center space-x-2">
+            <div className="ml-60 flex items-center space-x-2">
               <span>
                 {num1} + {num2} =
               </span>
