@@ -9,7 +9,7 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
       rel="noopener noreferrer"
       className={cn(
         "relative cursor-pointer overflow-hidden rounded-xl border flex flex-wrap items-center justify-between p-3 sm:p-4 md:p-6 w-full min-h-[100px]",
-        "border-gray-950/[.1] hover:bg-gray-950 hover:text-gray-100 bg-white",
+        "border-gray-950/[.1] hover:bg-gray-800 hover:text-gray-100 bg-white",
         "dark:border-gray-50/[.1] dark:bg-gray-900 dark:hover:bg-gray-50/[.15]"
       )}
     >
@@ -31,7 +31,7 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
         </div>
       </div>
 
-      <div className="text-right text-gray-500 text-xs sm:text-sm md:text-base">
+      <div className="text-right text-gray-500 dark:text-gray-300 text-xs sm:text-sm md:text-base">
         <p>
           {start} - {end ? end : "Present"}
         </p>

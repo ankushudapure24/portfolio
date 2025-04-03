@@ -26,12 +26,12 @@ const MyPage = () => {
   const [hoveredImage, setHoveredImage] = useState("/uni.png"); 
   const [showProjects, setShowProjects] = useState(false);
   const [showAll, setShowAll] = useState(false);
-  const companies = [
-    "/Vector.png",
-    "/Vector.png",
-    "/Vector.png",
-    "/Vector.png",
-  ];
+  // const companies = [
+  //   "/Vector.png",
+  //   "/Vector.png",
+  //   "/Vector.png",
+  //   "/Vector.png",
+  // ];
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       <section id="hero">
@@ -109,7 +109,7 @@ const MyPage = () => {
         <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
           Skills
         </h2>
-        <div className="relative flex w-full flex-col items-center justify-center rounded-lg gap-2 p-2 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
+        <div className="relative flex w-full my-6 flex-col items-center justify-center rounded-lg gap-2 p-2 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
           <Marquee reverse pauseOnHover className="[--duration:20s] flex">
             {DATA2.skills.map((skill, index) => (
               <div

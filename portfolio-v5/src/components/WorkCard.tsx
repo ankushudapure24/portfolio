@@ -27,7 +27,7 @@ const WorkCard = ({
         className={cn(
           "relative w-72 h-auto cursor-pointer overflow-hidden rounded-xl border p-4 flex flex-col items-center gap-3",
           "border-gray-950/[.1] bg-white hover:bg-gray-950/[.05]",
-          "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
+          "dark:border-gray-50/[.1] dark:bg-gray-100/[.10] dark:hover:bg-gray-50/[.15]"
         )}
       >
         <Image
@@ -35,7 +35,7 @@ const WorkCard = ({
           alt={company}
           width={48}
           height={48}
-          className="h-12 w-12 rounded-lg object-contain"
+          className="h-16 w-16 rounded-lg object-contain"
         />
         <div className="flex flex-col items-center text-center">
           <figcaption className="text-lg font-semibold dark:text-white">

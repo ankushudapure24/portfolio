@@ -7,10 +7,28 @@ import BlurFade from "./magicui/blur-fade";
 import Markdown from "react-markdown";
 import Image from "next/image";
 import { BorderBeam } from "./magicui/border-beam";
+import { AuroraText } from "./magicui/aurora-text";
+import { useState } from "react";
+import { motion } from "framer-motion";
+
+// import {
+//   Drawer,
+//   DrawerClose,
+//   DrawerContent,
+//   DrawerDescription,
+//   DrawerFooter,
+//   DrawerHeader,
+//   DrawerTitle,
+//   DrawerTrigger,
+// } from "@/components/ui/drawer";
+
+
+
 
 const BLUR_FADE_DELAY = 0.04;
 
 const ProfileCard = () => {
+   const [isVisible, setIsVisible] = useState(false);
   return (
     <div className="relative flex flex-col items-center text-center px-4 sm:px-6 lg:px-8">
       <div
@@ -41,10 +59,10 @@ const ProfileCard = () => {
       <Card className="w-full bg-white dark:bg-black rounded-xl shadow-lg overflow-hidden p-8">
         <CardContent className="flex mt-12 flex-col items-center gap-6">
           <h1 className="text-6xl sm:text-7xl font-bold text-black dark:text-white">
-            Hey, Hi! I'm {DATA.name.split(" ")[0]}
+            Hey, Hi! I'm <AuroraText>{DATA.name.split(" ")[0]}</AuroraText>
           </h1>
           <p className="text-lg sm:text-2xl text-gray-600 dark:text-gray-400">
-            {DATA.description}
+            <TextAnimate>{DATA.description}</TextAnimate>
           </p>
           <Avatar className="w-56 mt-4 h-56 rounded-full">
             <AvatarImage alt={DATA.name} src={DATA.avatarUrl} />
@@ -54,21 +72,57 @@ const ProfileCard = () => {
             <BorderBeam size={450} />
           </Avatar>
           <div className="flex gap-4 mt-4">
-            <Button className="bg-black text-white  dark:bg-white dark:text-black px-6 py-3 rounded-full hover:bg-gray-800">
+            {/* <Button className="bg-black text-white  dark:bg-white dark:text-black px-6 py-3 rounded-full hover:bg-gray-800">
               Let's Connect
-            </Button>
+            </Button> */}
+            {/* <Drawer>
+              <DrawerTrigger asChild>
+                <Button
+                  variant="default"
+                  onClick={() => setIsVisible(!isVisible)}
+                >
+                  About me
+                </Button>
+              </DrawerTrigger>
+              <DrawerContent>
+                <div className="mx-auto w-full max-w-sm">
+                  <DrawerDescription>
+                    <div className=" p-6 mt-6 rounded-3xl bg-gray-50 overflow-hidden">
+                      <BlurFade delay={BLUR_FADE_DELAY * 4}>
+                        <Markdown className="prose max-w-full text-pretty font-sans sm:text-sm md:text:xl xl:text-xl text-muted-foreground">
+                          {DATA.summary}
+                        </Markdown>
+                      </BlurFade>
+                    </div>
+                  </DrawerDescription>
+                </div>
+              </DrawerContent>
+            </Drawer> */}
             {/* <Button className="bg-gray-200 text-black px-6 py-3 rounded-full hover:bg-gray-300">
               View Projects
             </Button> */}
+            <Button variant="default" onClick={() => setIsVisible(!isVisible)}>
+              About me
+            </Button>
           </div>
         </CardContent>
       </Card>
-      <div className=" p-6 mt-6 rounded-3xl bg-gray-50 overflow-hidden">
-        <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans sm:text-sm md:text:xl xl:text-xl text-muted-foreground">
-            {DATA.summary}
-          </Markdown>
-        </BlurFade>
+      <div className="flex flex-col items-center">
+        {isVisible && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="p-6 mt-6 rounded-3xl bg-gray-50 overflow-hidden"
+          >
+            <BlurFade delay={BLUR_FADE_DELAY * 4}>
+              <Markdown className="prose max-w-full text-pretty font-sans sm:text-sm md:text-xl xl:text-xl text-muted-foreground">
+                {DATA.summary}
+              </Markdown>
+            </BlurFade>
+          </motion.div>
+        )}
       </div>
       <Card></Card>
     </div>
