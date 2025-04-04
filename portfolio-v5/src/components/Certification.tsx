@@ -17,7 +17,7 @@ const Certification: React.FC<CertificationProps> = ({
   imageUrl,
 }) => {
   return (
-    <div className="flex flex-col items-center bg-white p-5 shadow-xl rounded-lg w-[500px] md:w-[700px] h-[450px] border dark:border-gray-50/[.1] transition-transform transform hover:scale-105">
+    <div className="flex flex-col items-center bg-white p-5 shadow-xl rounded-lg w-[500px] max-w-[320px] md:w-[700px] h-[430px] border dark:bg-gray-800 dark:border-gray-50/[.1] transition-transform transform hover:scale-105">
       {imageUrl ? (
         <div className="w-full flex justify-center mb-2">
           <Image
@@ -33,12 +33,19 @@ const Certification: React.FC<CertificationProps> = ({
       )}
 
       <div className="text-center">
-        <h3 className="text-2xl font-semibold text-white mb-1">{title}</h3>
-        <p className="text-sm text-gray-600 font-medium">
-          <span className="font-bold text-gray-700">Issued by:</span> {issuer}
+        <h3 className="text-2xl font-semibold mb-4 text-black dark:text-gray-50">
+          {title}
+        </h3>
+        <p className="text-sm text-gray-600 font-medium dark:text-gray-200">
+          <span className="font-bold text-gray-700 dark:text-gray-100">
+            Issued by:
+          </span>{" "}
+          {issuer}
         </p>
-        <p className="text-sm text-gray-600 italic">{date}</p>
-        <p className="mt-3 text-gray-700 leading-relaxed text-base">
+        <p className="text-sm text-gray-600 italic dark:text-gray-200">
+          {date}
+        </p>
+        <p className="mt-3 text-gray-700 leading-relaxed text-base dark:text-gray-300">
           {description}
         </p>
       </div>

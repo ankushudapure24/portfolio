@@ -9,10 +9,10 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
-  { label: "Contact", href: "/contact" },
+  { label: "Home", href: "/testing" },
+  { label: "About", href: "#about" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const NavbarTop: React.FC = () => {
@@ -41,7 +41,7 @@ const NavbarTop: React.FC = () => {
           </div>
 
           <a
-            href="/hire"
+            href="#contact"
             className="hidden md:block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
           >
             Hire Me
@@ -67,7 +67,7 @@ const NavbarTop: React.FC = () => {
               {item.label}
             </a>
           ))}
-            <a
+          <a
             href="/hire"
             className="block text-center bg-blue-600 text-white px-4 py-2 mt-2 rounded-lg hover:bg-blue-700 transition"
           >

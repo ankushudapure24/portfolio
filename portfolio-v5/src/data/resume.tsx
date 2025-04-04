@@ -809,7 +809,25 @@ export const DATA2 = {
       imageUrl:
         "https://img.freepik.com/free-vector/minimal-certificate-template-design_23-2148896280.jpg?t=st=1741679606~exp=1741683206~hmac=bde2857e073c645874a0419c688fc7a6a16f46d741807590c9950d9739c7f279&w=1380",
     },
-    
+    {
+      title: "Data Science Specialization",
+      issuer: "Johns Hopkins University (Coursera)",
+      date: "Feb 2024",
+      description:
+        "Completed a comprehensive data science course covering data analysis, visualization, and machine learning.",
+      imageUrl:
+        "https://img.freepik.com/free-vector/minimal-certificate-template-design_23-2148896280.jpg?t=st=1741679606~exp=1741683206~hmac=bde2857e073c645874a0419c688fc7a6a16f46d741807590c9950d9739c7f279&w=1380",
+    },
+    {
+      title: "Data Science Specialization",
+      issuer: "Johns Hopkins University (Coursera)",
+      date: "Feb 2024",
+      description:
+        "Completed a comprehensive data science course covering data analysis, visualization, and machine learning.",
+      imageUrl:
+        "https://img.freepik.com/free-vector/minimal-certificate-template-design_23-2148896280.jpg?t=st=1741679606~exp=1741683206~hmac=bde2857e073c645874a0419c688fc7a6a16f46d741807590c9950d9739c7f279&w=1380",
+    },
+
     {
       title: "Google Cloud Associate Engineer",
       issuer: "Google Cloud",
@@ -830,6 +848,27 @@ export const DATA2 = {
       event: "Google CodeSprint",
       year: "2022",
       description: "Built a scalable e-commerce recommendation system.",
+    },
+    {
+      title: "Winner - Innovation Challenge",
+      event: "Smart India Hackathon",
+      year: "2023",
+      description:
+        "Designed a smart irrigation system using IoT and machine learning.",
+    },
+    {
+      title: "Runner-up - Startup Pitch",
+      event: "Entrepreneurship Summit",
+      year: "2022",
+      description:
+        "Pitched a peer-to-peer energy trading platform for rural areas.",
+    },
+    {
+      title: "Best UI/UX Design",
+      event: "DevDesign Jam",
+      year: "2024",
+      description:
+        "Created an intuitive health-tracking mobile app with gamification elements.",
     },
   ],
 } as const;

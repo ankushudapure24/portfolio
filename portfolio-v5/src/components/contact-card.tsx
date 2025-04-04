@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { useTheme } from "next-themes";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useEffect, useState, ChangeEvent, FormEvent } from "react";
 
 interface FormData {
   name: string;
@@ -18,14 +18,17 @@ export function ContactCard() {
     message: "",
   });
   const [submitted, setSubmitted] = useState<boolean>(false);
+  const [captchaToken, setCaptchaToken] = useState<string>("");
 
-  // CAPTCHA state
-  const [num1, setNum1] = useState(Math.floor(Math.random() * 10) + 1);
-  const [num2, setNum2] = useState(Math.floor(Math.random() * 10) + 1);
-  const [captchaAnswer, setCaptchaAnswer] = useState("");
-  const [captchaValid, setCaptchaValid] = useState(false);
+  const { theme } = useTheme();
 
-  const correctAnswer = num1 + num2;
+  // Load Google reCAPTCHA script
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -34,30 +37,25 @@ export function ContactCard() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleCaptchaChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setCaptchaAnswer(e.target.value);
-    setCaptchaValid(parseInt(e.target.value) === correctAnswer);
-  };
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!captchaValid) {
-      alert("CAPTCHA incorrect. Try again.");
+
+    const token = (window as any).grecaptcha.getResponse();
+
+    if (!token) {
+      alert("Please complete the CAPTCHA");
       return;
     }
 
+    setCaptchaToken(token); // store if needed
+    console.log("CAPTCHA Token:", token);
     console.log("Form Data:", formData);
+
     setSubmitted(true);
     setFormData({ name: "", email: "", message: "" });
-
-    // Reset CAPTCHA
-    setNum1(Math.floor(Math.random() * 10) + 1);
-    setNum2(Math.floor(Math.random() * 10) + 1);
-    setCaptchaAnswer("");
-    setCaptchaValid(false);
+    (window as any).grecaptcha.reset();
   };
 
-  const { theme } = useTheme();
   return (
     <Card>
       <MagicCard gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}>
@@ -101,29 +99,17 @@ export function ContactCard() {
               required
             />
 
-            {/* CAPTCHA */}
-            <div className="ml-60 flex items-center space-x-2">
-              <span>
-                {num1} + {num2} =
-              </span>
-              <input
-                type="number"
-                placeholder="Answer"
-                required
-                className="w-16 p-2 border rounded-lg"
-                value={captchaAnswer}
-                onChange={handleCaptchaChange}
-              />
+            {/* Google reCAPTCHA Widget */}
+            <div className="flex justify-center">
+              <div
+                className="g-recaptcha"
+                data-sitekey="6Le9_gkrAAAAAIRBkvLJYNzwtKJ2V8knu7rEaTLG"
+              ></div>
             </div>
 
             <button
               type="submit"
-              disabled={!captchaValid}
-              className={`w-full p-3 rounded-lg ${
-                captchaValid
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-300 text-gray-600"
-              }`}
+              className={`w-full p-3 rounded-lg bg-blue-500 text-white`}
             >
               Send Message
             </button>

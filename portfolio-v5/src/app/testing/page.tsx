@@ -19,6 +19,9 @@ import Link from "next/link";
 import { ContactCard } from "@/components/contact-card";
 import ParticlesDemo from "@/components/Partiles";
 import { Meteors } from "@/components/magicui/meteors";
+import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
+import { AuroraText } from "@/components/magicui/aurora-text";
+import AnimatedListDemo from "@/components/animated-lists";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -56,8 +59,8 @@ const MyPage = () => {
       </section>
       <section id="about"></section>
 
-      <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
-        Education
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold m-12 text-center">
+        <AuroraText>Education</AuroraText>
       </h2>
       <section className="education px-2 sm:px-6 md:px-10">
         <div className="flex flex-col md:flex-row sm:ml-4 rounded-3xl bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 bg-gray-900">
@@ -86,16 +89,16 @@ const MyPage = () => {
       </section>
 
       <section id="work" className="w-full px-4 sm:px-6 md:px-10">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
-          Work Experience
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold m-12 text-center">
+          <AuroraText>Work Experience</AuroraText>
         </h2>
 
-        <div className="relative flex p-6 w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
+        <div className="relative flex p-12 w-full flex-col items-center justify-center overflow-hidden rounded-3xl border bg-background">
           <div className="absolute inset-0 z-0">
             <RetroGrid />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 px-2 sm:px-4 md:px-8 z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 px-2 sm:px-4 md:px-8 z-10">
             {DATA.work.map((job) => (
               <WorkCard key={job.company} {...job} />
             ))}
@@ -106,10 +109,11 @@ const MyPage = () => {
       </section>
 
       <section id="skills">
-        <h2 className="text-4xl p-4 font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
-          Skills
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold m-12 text-center">
+          <AuroraText>Skills</AuroraText>
         </h2>
-        <div className="relative flex w-full my-6 flex-col items-center justify-center rounded-lg gap-2 p-2 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
+
+        <div className="relative flex w-full flex-col items-center justify-center rounded-lg gap-2 p-2 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
           <Marquee reverse pauseOnHover className="[--duration:20s] flex">
             {DATA2.skills.map((skill, index) => (
               <div
@@ -139,8 +143,8 @@ const MyPage = () => {
                   My Projects
                 </div>
                 <div>
-                  <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
-                    Explore My Work
+                  <h2 className="text-4xl font-extrabold sm:text-5xl ">
+                    <AuroraText>Explore My Work</AuroraText>
                   </h2>
                 </div>
                 <TextAnimate
@@ -200,15 +204,18 @@ const MyPage = () => {
       <section id="hackathons">
         <div className="space-y-12 w-full py-8">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="flex flex-col items-center justify-center m-12 space-y-4 text-center">
+              <VelocityScroll numRows={1}>
+                <AuroraText>Hackathons</AuroraText>
+              </VelocityScroll>
               <div className="space-y-2">
-                <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
+                {/* <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
                   Hackathons
-                </div>
+                </div> */}
                 <div>
-                  <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
+                  {/* <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
                     I like building things
-                  </h2>
+                  </h2> */}
                 </div>
                 <TextAnimate className="text-gray-600 dark:text-gray-300 md:text-lg lg:text-base/relaxed xl:text-lg/relaxed max-w-3xl mx-auto">
                   {`During my time in university, I attended ${DATA.hackathons.length}+ hackathons. People from around the country would come together and build incredible things in 2-3 days. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.`}
@@ -239,7 +246,7 @@ const MyPage = () => {
             {DATA.hackathons.length > 8 && (
               <div className="flex justify-center mt-4">
                 <button
-                  className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                  className="pinline-block rounded-xl bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg shadow-md"
                   onClick={() => setShowAll(!showAll)}
                 >
                   {showAll ? "Show Less" : "Show All"}
@@ -251,13 +258,16 @@ const MyPage = () => {
       </section>
 
       <section className="Certification relative">
-        <div className="flex flex-col py-4 items-center">
-          <div className="iinline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
+        <div className="flex flex-col py-4 items-center m-12">
+          {/* <div className="iinline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
             Certificates
-          </div>
+          </div> */}
+          <VelocityScroll numRows={1}>
+            <AuroraText>Certificates</AuroraText>
+          </VelocityScroll>
         </div>
 
-        <div className="relative overflow-hidden m-12 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
+        {/* <div className="relative overflow-hidden m-12 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-5 rounded-3xl dark:from-gray-900 dark:to-gray-800 shadow-md">
           <div
             className="relative flex flex-row gap-4 h-full items-center my-6 max-w-7xl z-10"
             style={{ scrollbarWidth: "none" }}
@@ -267,22 +277,50 @@ const MyPage = () => {
             ))}
           </div>
           <BorderBeam />
+        </div> */}
+        <div className="relative overflow-hidden m-12 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-5 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-md">
+          <div
+            className={`relative flex gap-4 items-center my-6 max-w-7xl z-10 ${
+              DATA2.certifications.length > 4 ? "overflow-x-auto" : ""
+            }`}
+            style={{
+              scrollbarWidth: "none",
+              WebkitOverflowScrolling: "touch", 
+            }}
+          >
+            <div
+              className={`flex gap-4 items-center ${
+                DATA2.certifications.length > 4 ? "min-w-max" : ""
+              }`}
+            >
+              {DATA2.certifications.map((cert, index) => (
+                
+                  <Certification key={index} {...cert} />
+                
+              ))}
+            </div>
+          </div>
+          <BorderBeam />
         </div>
       </section>
 
       <section id="Achivements">
-        <div className="flex flex-col py-6 items-center">
-          <div className="iinline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
+        <div className="flex flex-col mt-4 items-center m-12">
+          {/* <div className="iinline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg font-semibold shadow-md">
             Achievements
-          </div>
+          </div> */}
+          <VelocityScroll numRows={1}>
+            <AuroraText>Achievements</AuroraText>
+          </VelocityScroll>
         </div>
-        <div className="relative overflow-hidden flex flex-col m-12 items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-5 rounded-3xl dark:from-black shadow-md">
+        <div className="relative overflow-hidden flex flex-col m-12 items-center p-5 rounded-3xl dark:from-black shadow-md">
           {/* <div className="absolute inset-1 bg-[url('/pattern.svg')] bg-cover opacity-80 "></div> */}
 
           <div className="flex flex-col items-center my-10 max-w-6xl">
-            {DATA2.achievements.map((achieve, index) => (
+            {/* {DATA2.achievements.map((achieve, index) => (
               <Achievement key={index} {...achieve} />
-            ))}
+            ))} */}
+            <AnimatedListDemo />
           </div>
           <BorderBeam />
         </div>
