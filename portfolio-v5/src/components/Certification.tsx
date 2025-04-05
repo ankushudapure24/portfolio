@@ -6,7 +6,7 @@ interface CertificationProps {
   issuer: string;
   date: string;
   description: string;
-  imageUrl?: string; // Optional prop
+  imageUrl?: string;
 }
 
 const Certification: React.FC<CertificationProps> = ({
@@ -17,7 +17,7 @@ const Certification: React.FC<CertificationProps> = ({
   imageUrl,
 }) => {
   return (
-    <div className="flex flex-col items-center bg-white p-5 shadow-xl rounded-lg w-[500px] max-w-[320px] md:w-[700px] h-[430px] border dark:bg-gray-800 dark:border-gray-50/[.1] transition-transform transform hover:scale-105">
+    <div className="flex flex-col items-center bg-white p-5 shadow-xl rounded-lg w-[500px] max-w-[320px] md:w-[700px] h-[420px] border border-gray-300 dark:border-gray-700 dark:bg-gray-900 transition-transform transform hover:scale-105">
       {imageUrl ? (
         <div className="w-full flex justify-center mb-2">
           <Image
@@ -29,7 +29,7 @@ const Certification: React.FC<CertificationProps> = ({
           />
         </div>
       ) : (
-        <div className="w-full h-[150px] mb-4"></div> // Keeps space even if no image
+        <div className="w-full h-[150px] mb-4"></div>
       )}
 
       <div className="text-center">
