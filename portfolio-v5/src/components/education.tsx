@@ -31,7 +31,7 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
         </div>
       </div>
 
-      <div className="text-right text-gray-500 dark:text-gray-300 text-xs sm:text-sm md:text-base">
+      <div className="text-right text-gray-500 dark:text-gray-300 text-xs sm:text-sm md:text-base ">
         <p>
           {start} - {end ? end : "Present"}
         </p>
@@ -41,19 +41,3 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
 };
 
 export default EducationItem;
-
-// Main Education Section Component
-// const EducationSection = () => {
-//   return (
-//     <section>
-//       <h2 className="text-xl font-bold mb-4">Education</h2>
-//       <div className="space-y-4">
-//         {DATA.education.map((edu, index) => (
-//           <EducationItem key={index} {...edu} />
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default EducationSection;

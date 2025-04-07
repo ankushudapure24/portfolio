@@ -144,11 +144,15 @@ const MyPage = () => {
           </BlurFade>
 
           <motion.div
-            className="relative overflow-hidden transition-all w-full"
+            className="relative overflow-hidden transition-all h-full w-full sm:max-h-none"
             style={{
-              maxHeight: showProjects ? "none" : "400px",
+              maxHeight: showProjects ? "none" : "420px",
             }}
-            animate={{ maxHeight: showProjects ? "1200px" : "400px" }}
+            animate={
+              typeof window !== "undefined" && window.innerWidth >= 640
+                ? { maxHeight: showProjects ? "1200px" : "420px" }
+                : {}
+            }
             transition={{ duration: 0.6, ease: "easeInOut" }}
           >
             <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 lg:grid-cols-3">
@@ -159,7 +163,6 @@ const MyPage = () => {
                 >
                   <ProjectCard
                     href={project.href}
-                    key={project.title}
                     title={project.title}
                     description={project.description}
                     dates={project.dates}

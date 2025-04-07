@@ -16,11 +16,11 @@ const BLUR_FADE_DELAY = 0.04;
 const ProfileCard = () => {
    const [isVisible, setIsVisible] = useState(false);
   return (
-    <div className="relative flex flex-col items-center text-center px-4 sm:px-6 lg:px-8">
+    <div className="relative flex flex-col items-center text-center px-4 sm:px-6 lg:px-6">
       <div
-        className="absolute inset-1 bottom-40 top-10 bg-[url('/pattern.svg')] bg-left-top bg-transparent opacity-40 dark:opacity-70 mx-8 
+        className="absolute inset-1 bottom-40 top-10 bg-[url('/pattern.svg')] bg-left-top bg-transparent opacity-40 dark:opacity-70  
     sm:mx-4
-    max-sm:inset-x-2 max-sm:top-16 max-sm:bottom-28 max-sm:mx-2"
+    max-sm:inset-x-2 max-sm:top-16 max-sm:bottom-28 max-sm:mx-2 "
         style={{
           maskImage:
             "radial-gradient(circle, rgba(0,0,0,0) 20%, rgba(0,0,0,1) 60%)",
