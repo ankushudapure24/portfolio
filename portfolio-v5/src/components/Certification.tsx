@@ -19,7 +19,7 @@ const Certification: React.FC<CertificationProps> = ({
   return (
     <div className="flex flex-col items-center bg-white p-5 shadow-xl rounded-lg w-[500px] max-w-[320px] md:w-[700px] h-[420px] border border-gray-300 dark:border-gray-700 dark:bg-gray-900 transition-transform transform hover:scale-105">
       {imageUrl ? (
-        <div className="w-full flex justify-center mb-2">
+        <div className="w-full flex justify-center mb-4">
           <Image
             src={imageUrl}
             alt={title}

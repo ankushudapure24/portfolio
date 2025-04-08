@@ -27,7 +27,7 @@ const WorkCard = ({
         className={cn(
           "relative w-72 h-auto cursor-pointer overflow-hidden rounded-xl border p-4 flex flex-col items-center gap-3",
           "border-gray-950/[.1] bg-white hover:bg-gray-950/[.05]",
-          "dark:border-gray-50/[.1] dark:bg-gray-100/[.10] dark:hover:bg-gray-50/[.15]"
+          "dark:border-gray-50/[.1] dark:bg-gray-950 dark:hover:bg-gray-700/[.15]"
         )}
       >
         <Image
@@ -75,25 +75,5 @@ const WorkCard = ({
     </>
   );
 };
-
-// export function MarqueeWorkExperience() {
-//   return (
-//     <section>
-//       <h2 className="text-xl font-bold mb-4">Work Experince</h2>
-//       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-//         <Marquee pauseOnHover className="[--duration:15s] flex">
-//           {DATA.work.map((job) => (
-//             <WorkCard key={job.company} {...job} />
-//           ))}
-//         </Marquee>
-//         <Marquee reverse pauseOnHover className="[--duration:20s] flex">
-//           {DATA.work.map((job) => (
-//             <WorkCard key={job.company} {...job} />
-//           ))}
-//         </Marquee>
-//       </div>
-//     </section>
-//   );
-// }
 
 export default WorkCard;

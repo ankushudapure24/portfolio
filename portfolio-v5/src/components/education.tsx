@@ -14,13 +14,15 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
       )}
     >
       <div className="flex items-center gap-3 sm:gap-4">
-        <Image
-          src={logoUrl}
-          alt={school}
-          width={50}
-          height={50}
-          className="rounded-full w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
-        />
+        <div className="rounded-2xl bg-gray-100 p-1">
+          <Image
+            src={logoUrl}
+            alt={school}
+            width={50}
+            height={50}
+            className="rounded-2xl w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
+          />
+        </div>
         <div className="ml-3 sm:ml-4">
           <h3 className="text-md sm:text-lg md:text-xl font-semibold">
             {school}

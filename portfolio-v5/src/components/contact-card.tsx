@@ -4,6 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { useTheme } from "next-themes";
 import { useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 interface FormData {
   name: string;
@@ -22,7 +24,6 @@ export function ContactCard() {
 
   const { theme } = useTheme();
 
-  // Load Google reCAPTCHA script
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://www.google.com/recaptcha/api.js";
@@ -37,7 +38,7 @@ export function ContactCard() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const token = (window as any).grecaptcha.getResponse();
@@ -47,13 +48,22 @@ export function ContactCard() {
       return;
     }
 
-    setCaptchaToken(token); // store if needed
-    console.log("CAPTCHA Token:", token);
-    console.log("Form Data:", formData);
+    setCaptchaToken(token);
 
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
-    (window as any).grecaptcha.reset();
+    try {
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        captchaToken: token,
+        timestamp: new Date(),
+      });
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      (window as any).grecaptcha.reset();
+    } catch (error) {
+      console.error("Error submitting contact form: ", error);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -94,22 +104,18 @@ export function ContactCard() {
               placeholder="Your Message"
               value={formData.message}
               onChange={handleChange}
-              rows={5}
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 border rounded-lg h-32 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
-
-            {/* Google reCAPTCHA Widget */}
             <div className="flex justify-center">
               <div
                 className="g-recaptcha"
                 data-sitekey="6Le9_gkrAAAAAIRBkvLJYNzwtKJ2V8knu7rEaTLG"
               ></div>
             </div>
-
             <button
               type="submit"
-              className={`w-full p-3 rounded-lg bg-blue-500 text-white`}
+              className="w-46 p-2 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
             >
               Send Message
             </button>

@@ -19,14 +19,12 @@ import { ContactCard } from "@/components/contact-card";
 import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import AnimatedListDemo from "@/components/animated-lists";
-
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardTitle,
 } from "@/components/ui/card";
 import { WarpBackground } from "@/components/magicui/warp-background";
+import Achievement from "@/components/Achivements";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -93,26 +91,32 @@ const MyPage = () => {
         </div>
       </section>
 
-      <section id="skills">
+      <section id="skills" className="items-center flex flex-col">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
           <AuroraText>Skills</AuroraText>
         </h2>
 
-        <div className="relative flex w-full flex-col items-center justify-center rounded-lg gap-2 p-2 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
-          <Marquee reverse pauseOnHover className="[--duration:20s] flex">
+        <div className="relative flex w-full max-w-[1420px] items-center justify-center rounded-lg gap-2 p-1 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
+          <Marquee reverse pauseOnHover className="[--duration:20s] flex p-4">
             {DATA2.skills.map((skill, index) => (
               <div
                 key={index}
-                className="bg-white backdrop-blur-md border border-white/20 p-10 dark:bg-gray-800 rounded-lg flex flex-col items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300"
+                className="w-32 h-40 bg-white dark:bg-gray-800 border-2 border-indigo-950 dark:border-indigo-600 rounded-xl shadow-xl flex flex-col items-center justify-between p-4 transform transition-transform duration-300 hover:scale-105 hover:border-blue-500 group"
               >
-                <Image
-                  src={skill.icons_url}
-                  alt={skill.name}
-                  width={30}
-                  height={30}
-                  className="mb-2"
-                />
-                <span className="text-sm font-medium">{skill.name}</span>
+                <div className="h-20 flex items-center justify-center">
+                  <Image
+                    src={skill.icons_url}
+                    alt={skill.name}
+                    width={44}
+                    height={44}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
+                </div>
+                <div className="flex items-end justify-center">
+                  <span className="text-md font-medium text-center text-gray-800 dark:text-gray-100">
+                    {skill.name}
+                  </span>
+                </div>
               </div>
             ))}
           </Marquee>
@@ -124,9 +128,12 @@ const MyPage = () => {
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-6 text-center mb-6">
               <div className="space-y-3">
-                <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
+                {/* <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
                   My Projects
-                </div>
+                </div> */}
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold  text-center">
+                  <AuroraText>Projects</AuroraText>
+                </h2>
                 <div>
                   <h2 className="text-4xl font-extrabold sm:text-5xl ">
                     <AuroraText>Explore My Work</AuroraText>
@@ -193,14 +200,17 @@ const MyPage = () => {
         <div className="space-y-12 w-full py-8">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <VelocityScroll numRows={1}>
+              {/* <VelocityScroll numRows={1}>
                 <AuroraText>Hackathons</AuroraText>
-              </VelocityScroll>
+              </VelocityScroll> */}
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold  text-center">
+                <AuroraText>Hackathons</AuroraText>
+              </h2>
               <div className="space-y-2">
                 <div>
-                  {/* <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
+                  <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
                     I like building things
-                  </h2> */}
+                  </h2>
                 </div>
                 <TextAnimate className="text-gray-600 dark:text-gray-300 md:text-lg lg:text-base/relaxed xl:text-lg/relaxed max-w-3xl mx-auto">
                   {`During my time in university, I attended ${DATA.hackathons.length}+ hackathons. People from around the country would come together and build incredible things in 2-3 days. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.`}
@@ -231,7 +241,7 @@ const MyPage = () => {
             {DATA.hackathons.length > 8 && (
               <div className="flex justify-center mt-4">
                 <button
-                  className="pinline-block rounded-xl bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg shadow-md"
+                  className="pinline-block rounded-lg bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg shadow-md"
                   onClick={() => setShowAll(!showAll)}
                 >
                   {showAll ? "Show Less" : "Show All"}
@@ -244,13 +254,11 @@ const MyPage = () => {
 
       {DATA2.certifications && DATA2.certifications.length > 0 && (
         <section className="Certification relative">
-          <div className="flex flex-col py-6 items-center">
-            <VelocityScroll numRows={1}>
-              <AuroraText>Certificates</AuroraText>
-            </VelocityScroll>
-          </div>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
+            <AuroraText>Certificates</AuroraText>
+          </h2>
 
-          <div className="relative overflow-hidden px-4 sm:px-6 m-4 sm:m-6 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-4 sm:p-5 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-md">
+          <div className="relative overflow-hidden px-4 sm:px-6 m-4 sm:m-6 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-md">
             <div
               className={`relative flex gap-4 items-center my-4 sm:my-6 w-full max-w-[1360px] px-2 sm:px-6 z-10 ${
                 DATA2.certifications.length >= 4 ? "overflow-x-auto" : ""
@@ -261,7 +269,7 @@ const MyPage = () => {
               }}
             >
               <div
-                className={`flex gap-4 items-center ${
+                className={`flex gap-4 items-center p-3 ${
                   DATA2.certifications.length >= 4
                     ? "min-w-max"
                     : "w-full justify-center flex-wrap"
@@ -273,7 +281,7 @@ const MyPage = () => {
                 ))}
               </div>
             </div>
-            <BorderBeam />
+            {/* <BorderBeam /> */}
           </div>
         </section>
       )}
@@ -293,9 +301,12 @@ const MyPage = () => {
       </section> */}
 
       <section id="Achivements">
-        <VelocityScroll numRows={1}>
+        {/* <VelocityScroll numRows={1}>
           <AuroraText>Achievements</AuroraText>
-        </VelocityScroll>
+        </VelocityScroll> */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
+          <AuroraText>Achievements</AuroraText>
+        </h2>
 
         <div className="flex flex-col items-center">
           <WarpBackground className="w-full max-w-[1440px] px-4 sm:px-6 md:px-8 my-12 flex justify-center">

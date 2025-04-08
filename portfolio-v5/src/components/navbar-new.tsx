@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { DATA } from "@/data/resume";
 
+
 interface NavItem {
   label: string;
   href: string;
@@ -39,7 +40,6 @@ const NavbarTop: React.FC = () => {
               </a>
             ))}
           </div>
-
           <a
             href="#contact"
             className="hidden md:block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
