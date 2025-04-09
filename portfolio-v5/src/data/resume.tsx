@@ -842,12 +842,16 @@ export const DATA2 = {
       event: "TechFest 2023",
       year: "2023",
       description: "Developed an AI-powered chatbot for medical consultation.",
+      image:
+        "https://img.freepik.com/free-photo/cup-man-achievement-success-honor_1150-1719.jpg?t=st=1744199501~exp=1744203101~hmac=4e8b2269624d1c2f09d416d20ac37bf5cc4e9ac5d1fb7b5604cccf179ffcfb90&w=1380",
     },
     {
       title: "Top 10 Finalist in CodeSprint",
       event: "Google CodeSprint",
       year: "2022",
       description: "Built a scalable e-commerce recommendation system.",
+      image:
+        "https://img.freepik.com/free-vector/employee-appreciation-concept-illustration_114360-16448.jpg?t=st=1744199445~exp=1744203045~hmac=213c5154b384a870a28f8ad73e29677909e2e25d4517a103ef1e657f3806cba7&w=1380",
     },
     {
       title: "Winner - Innovation Challenge",
@@ -855,6 +859,8 @@ export const DATA2 = {
       year: "2023",
       description:
         "Designed a smart irrigation system using IoT and machine learning.",
+      image:
+        "https://img.freepik.com/free-vector/teamwork-team-success-concept_74855-6673.jpg?t=st=1744199073~exp=1744202673~hmac=b87c1b40ddd9ef5b07a7436d8dc7a9b66fcac6b5b9a429916bf56c5e47a4c31d&w=1380",
     },
     {
       title: "Runner-up - Startup Pitch",
@@ -862,6 +868,8 @@ export const DATA2 = {
       year: "2022",
       description:
         "Pitched a peer-to-peer energy trading platform for rural areas.",
+      image:
+        "https://img.freepik.com/free-vector/leadership-reach-business-success-trophy-global-business-companies-corporate-employees-are-always-competing-higher-better-positions-business-concept-goals-success_1150-55454.jpg?t=st=1744199380~exp=1744202980~hmac=d8524af6b4157f838dd32ab612b3e9c1c170183e0ce98890fcfff2a2e395dc8c&w=1380",
     },
     {
       title: "Best UI/UX Design",

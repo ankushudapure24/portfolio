@@ -23,6 +23,7 @@ export function ContactCard() {
   const [captchaToken, setCaptchaToken] = useState<string>("");
 
   const { theme } = useTheme();
+  console.log('theme---',theme);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -111,6 +112,7 @@ export function ContactCard() {
               <div
                 className="g-recaptcha"
                 data-sitekey="6Le9_gkrAAAAAIRBkvLJYNzwtKJ2V8knu7rEaTLG"
+                data-theme='dark'
               ></div>
             </div>
             <button

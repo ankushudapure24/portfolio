@@ -51,22 +51,25 @@ const MyPage = () => {
             {DATA.education.map((edu: any, index: number) => (
               <div
                 key={index}
-                onMouseEnter={() => setHoveredImage(edu.logoUrl)} // Change image on hover
-                onMouseLeave={() => setHoveredImage("/uni.png")} // Reset on hover out
+                onMouseEnter={() => setHoveredImage(edu.logoUrl)} 
+                onMouseLeave={() => setHoveredImage("/uni.png")} 
               >
                 <EducationItem {...edu} />
               </div>
             ))}
           </div>
 
-          <div className="hidden md:flex w-1/2 items-center justify-center">
-            <Image
-              src={hoveredImage}
-              alt="Education"
-              width={420}
-              height={320}
-              className="object-contain transition-all duration-300 ease-in-out"
-            />
+          <div className="hidden md:flex w-1/2 items-center justify-center relative p-6">
+            <div className="relative w-[420px] h-[340px] flex items-center justify-center backdrop-blur-md bg-white/10 rounded-2xl shadow-2xl border border-white/20">
+              <Image
+                src={hoveredImage}
+                alt="Education Highlight"
+                width={300}
+                height={280}
+                className="object-contain rounded-2xl transition-all"
+              />
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent opacity-20 pointer-events-none" />
+            </div>
           </div>
         </div>
       </section>
@@ -96,7 +99,7 @@ const MyPage = () => {
           <AuroraText>Skills</AuroraText>
         </h2>
 
-        <div className="relative flex w-full max-w-[1420px] items-center justify-center rounded-lg gap-2 p-1 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
+        <div className="relative flex w-full max-w-[1400px] items-center justify-center rounded-lg gap-2 p-1 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
           <Marquee reverse pauseOnHover className="[--duration:20s] flex p-4">
             {DATA2.skills.map((skill, index) => (
               <div
@@ -183,7 +186,7 @@ const MyPage = () => {
             </div>
 
             {!showProjects && (
-              <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-black to-transparent"></div>
+              <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-black to-transparent mx-12"></div>
             )}
           </motion.div>
 
@@ -258,7 +261,7 @@ const MyPage = () => {
             <AuroraText>Certificates</AuroraText>
           </h2>
 
-          <div className="relative overflow-hidden px-4 sm:px-6 m-4 sm:m-6 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-md">
+          <div className="relative overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 sm:m-6 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-md">
             <div
               className={`relative flex gap-4 items-center my-4 sm:my-6 w-full max-w-[1360px] px-2 sm:px-6 z-10 ${
                 DATA2.certifications.length >= 4 ? "overflow-x-auto" : ""
@@ -309,7 +312,7 @@ const MyPage = () => {
         </h2>
 
         <div className="flex flex-col items-center">
-          <WarpBackground className="w-full max-w-[1440px] px-4 sm:px-6 md:px-8 my-12 flex justify-center">
+          <WarpBackground className="w-full max-w-[1430px] px-4 sm:px-6 md:px-8 my-12 flex justify-center">
             <Card className="flex flex-col sm:w-auto md:w-auto lg:w-[840px]">
               <CardContent className="flex flex-col p-4 items-center">
                 <AnimatedListDemo />

@@ -16,10 +16,10 @@ const BLUR_FADE_DELAY = 0.04;
 const ProfileCard = () => {
   const [isVisible, setIsVisible] = useState(false);
   return (
-    <div className="relative flex flex-col items-center text-center px-4 sm:px-6 lg:px-4">
+    <div className="relative flex flex-col items-center text-center px-4 sm:px-6 lg:px-4 ">
       <Card className="w-full bg-white dark:bg-black rounded-xl shadow-lg overflow-hidden p-8">
         <div
-          className="absolute inset-0 bottom-40 top-10 bg-[url('/pattern.svg')] bg-transparent opacity-40 dark:opacity-60  
+          className="absolute inset-0 bottom-20 top-10 bg-[url('/pattern.svg')] bg-transparent opacity-40 dark:opacity-60  
     sm:mx-4
     max-sm:inset-x-2 max-sm:top-16 max-sm:bottom-28 max-sm:mx-2 "
           style={{
@@ -50,7 +50,7 @@ const ProfileCard = () => {
           <p className="text-lg sm:text-2xl text-gray-600 dark:text-gray-400">
             <TextAnimate>{DATA.description}</TextAnimate>
           </p>
-          <div className="relative w-56 h-56 flex items-center justify-center">
+          <div className="relative w-full h-56 mt-6 flex items-center justify-center">
             <AnimatePresence mode="wait">
               {!isVisible ? (
                 <motion.div
@@ -61,7 +61,7 @@ const ProfileCard = () => {
                   transition={{ duration: 0.5 }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <Avatar className="w-56 h-56 border-2 border-black dark:border-white rounded-full">
+                  <Avatar className="w-56 h-56 border-2 mt-4 border-black dark:border-white rounded-full">
                     <AvatarImage src={DATA.avatarUrl} />
                     <AvatarFallback>{DATA.name.charAt(0)}</AvatarFallback>
                   </Avatar>
@@ -76,10 +76,10 @@ const ProfileCard = () => {
                   className="absolute inset-0 flex items-center justify-center"
                 >
                   <div
-                    className="w-96 h-64 mt-4 p-4 bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-auto text-left"
+                    className="w-[40rem] h-[11rem] p-4 border-2 border-black dark:border-white bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-auto text-center"
                     style={{
-                      scrollbarWidth: "none", // Firefox
-                      msOverflowStyle: "none", // IE 10+
+                      scrollbarWidth: "none", 
+                      msOverflowStyle: "none", 
                     }}
                   >
                     <BlurFade delay={0.2}>
@@ -100,7 +100,6 @@ const ProfileCard = () => {
           </div>
         </CardContent>
       </Card>
-      <Card></Card>
     </div>
   );
 };

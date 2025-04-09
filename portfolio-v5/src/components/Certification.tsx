@@ -16,6 +16,7 @@ const Certification: React.FC<CertificationProps> = ({
   description,
   imageUrl,
 }) => {
+   if (!imageUrl) return null;
   return (
     <div className="flex flex-col items-center bg-white p-5 shadow-xl rounded-lg w-[500px] max-w-[320px] md:w-[700px] h-[420px] border border-gray-300 dark:border-gray-700 dark:bg-gray-900 transition-transform transform hover:scale-105">
       {imageUrl ? (
