@@ -19,7 +19,7 @@ const ProfileCard = () => {
     <div className="relative flex flex-col items-center text-center px-4 sm:px-6 lg:px-4 ">
       <Card className="w-full bg-white dark:bg-black rounded-xl shadow-lg overflow-hidden p-8">
         <div
-          className="absolute inset-0 bottom-20 top-10 bg-[url('/pattern.svg')] bg-transparent opacity-40 dark:opacity-60  
+          className="absolute hidden md:block lg:block inset-0 bottom-20 top-10 bg-[url('/pattern.svg')] bg-transparent opacity-40 dark:opacity-60  
     sm:mx-4
     max-sm:inset-x-2 max-sm:top-16 max-sm:bottom-28 max-sm:mx-2 "
           style={{
@@ -50,53 +50,39 @@ const ProfileCard = () => {
           <p className="text-lg sm:text-2xl text-gray-600 dark:text-gray-400">
             <TextAnimate>{DATA.description}</TextAnimate>
           </p>
-          <div className="relative w-full h-56 mt-6 flex items-center justify-center">
-            <AnimatePresence mode="wait">
-              {!isVisible ? (
-                <motion.div
-                  key="avatar"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <Avatar className="w-56 h-56 border-2 mt-4 border-black dark:border-white rounded-full">
-                    <AvatarImage src={DATA.avatarUrl} />
-                    <AvatarFallback>{DATA.name.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="about"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <div
-                    className="w-[40rem] h-[11rem] p-4 border-2 border-black dark:border-white bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-auto text-center"
-                    style={{
-                      scrollbarWidth: "none", 
-                      msOverflowStyle: "none", 
-                    }}
-                  >
-                    <BlurFade delay={0.2}>
-                      <Markdown className="prose dark:prose-invert text-sm sm:text-base">
-                        {DATA.summary || "Here's something about me..."}
-                      </Markdown>
-                    </BlurFade>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+          <div className="w-full mt-6 flex justify-center">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-10 max-w-5xl bg-gradient-to-bl dark:from-gray-950 dark:via-violet-600 dark:to-blue-600 rounded-xl w-full px-2 py-2 shadow-md">
+              {/* Avatar on the Left (or Top on Mobile) */}
+              <div className="flex-shrink-0 m-2">
+                <Avatar className="w-52 h-48 sm:w-48 sm:h-48 md:w-52 md:h-52 border-2 bg-white dark:bg-black border-black dark:border-white rounded-2xl">
+                  <AvatarImage src={DATA.avatarUrl} />
+                  <AvatarFallback>{DATA.name.charAt(0)}</AvatarFallback>
+                </Avatar>
+              </div>
+
+              {/* About Section on the Right (or Below on Mobile) */}
+              <div
+                className="relative h-auto md:h-52 p-3 m-2 bg-white/10 dark:bg-black/35 rounded-2xl overflow-auto text-center"
+                // style={{
+                //   scrollbarWidth: "none",
+                //   msOverflowStyle: "none",
+                // }}
+              >
+                <BlurFade delay={0.2}>
+                  <Markdown className="prose dark:prose-invert text-sm sm:text-base md:text-xl text-left">
+                    {DATA.summary || "Here's something about me..."}
+                  </Markdown>
+                </BlurFade>
+                {/* <BorderBeam /> */}
+              </div>
+            </div>
           </div>
 
-          <div className="flex gap-4 mt-6">
-            <Button variant="default" onClick={() => setIsVisible(!isVisible)}>
+          <div className="flex gap-4 mt-4">
+            {/* <Button variant="default" onClick={() => setIsVisible(!isVisible)}>
               {isVisible ? "Back" : "About Me"}
-            </Button>
+            </Button> */}
+            <Button variant="default">Let's Connnect</Button>
           </div>
         </CardContent>
       </Card>

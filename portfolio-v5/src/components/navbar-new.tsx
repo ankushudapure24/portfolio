@@ -12,7 +12,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { label: "Home", href: "/testing" },
+  { label: "Home", href: "/portfolio" },
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
@@ -70,12 +70,16 @@ const NavbarTop: React.FC = () => {
               {item.label}
             </a>
           ))}
-          <a
+          {/* <a
             href="/hire"
             className="block text-center bg-blue-600 text-white px-4 py-2 mt-2 rounded-lg hover:bg-blue-700 transition"
           >
             Hire Me
+          </a> */}
+          <a className="md:hidden backdrop-blur-md bg-white/30 dark:bg-gray-900/30">
+            Theme
           </a>
+          <ModeToggle />
         </div>
       )}
     </nav>

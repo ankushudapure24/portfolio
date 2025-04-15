@@ -167,7 +167,6 @@ export const DATA = {
       description:
         "Designed and implemented a robust password encryption and browser cookie storage system in Ruby on Rails. Leveraged the Yahoo finance API to develop the dividend.com equity screener",
     },
-    
   ],
   education: [
     {
@@ -184,6 +183,22 @@ export const DATA = {
       degree: "Bachelor's Degree of Computer Science (BCS)",
       logoUrl: "/waterloo.png",
       start: "2016",
+    },
+    {
+      school: "Wilfrid Laurier University",
+      href: "https://wlu.ca",
+      degree: "Bachelor's Degree of Business Administration (BBA)",
+      logoUrl: "/laurier.png",
+      start: "2016",
+      end: "2021",
+    },
+    {
+      school: "International Baccalaureate",
+      href: "https://ibo.org",
+      degree: "IB Diploma",
+      logoUrl: "/ib.png",
+      start: "2012",
+      end: "2016",
     },
     {
       school: "Wilfrid Laurier University",

@@ -1,44 +1,66 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { MagicCard } from "./magicui/magic-card";
+import { Card, CardContent } from "./ui/card";
+import { useTheme } from "next-themes";
 
 const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cn(
-        "relative cursor-pointer overflow-hidden rounded-xl border flex flex-wrap items-center justify-between p-3 sm:p-4 md:p-6 w-full min-h-[100px]",
-        "border-gray-950/[.1] bg-white hover:shadow-md",
-        "dark:border-gray-50/[.1] dark:bg-gray-900 dark:hover:bg-gray-50/[.15]"
-      )}
-    >
-      <div className="flex items-center gap-3 sm:gap-4">
-        <div className="rounded-2xl bg-gray-100 p-1">
-          <Image
-            src={logoUrl}
-            alt={school}
-            width={50}
-            height={50}
-            className="rounded-2xl w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
-          />
-        </div>
-        <div className="ml-3 sm:ml-4">
-          <h3 className="text-md sm:text-lg md:text-xl font-semibold">
-            {school}
-          </h3>
-          <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm md:text-base">
-            {degree}
-          </p>
-        </div>
-      </div>
+  const { theme } = useTheme();
+  console.log("theme---", theme);
 
-      <div className="text-right text-gray-500 dark:text-gray-300 text-xs sm:text-sm md:text-base ">
-        <p>
-          {start} - {end ? end : "Present"}
-        </p>
-      </div>
-    </a>
+  return (
+    // <Card className="w-full max-w-[300px] max-h-[400px] rounded-2xl p-4 bg">
+    <MagicCard
+      gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
+      className="w-[320px] h-[400px] rounded-2xl"
+    >
+      <CardContent className="p-3 h-full">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "relative cursor-pointer overflow-hidden rounded-2xl border flex flex-col items-center justify-between p-6 gap-5 lg:h-[375px]",
+            "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:hover:bg-gray-800 transition-all duration-300 ease-in-out hover:shadow-lg"
+          )}
+        >
+          {/* Circular Image */}
+          <div className="rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600 shadow-md w-24 h-24 sm:w-28 sm:h-28">
+            <Image
+              src={logoUrl}
+              alt={school}
+              width={112}
+              height={112}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Text Details */}
+          <div className="text-center">
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+              {school}
+            </h3>
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
+              {degree}
+            </p>
+          </div>
+
+          {/* Duration */}
+          <div className="text-xs text-gray-500 dark:text-gray-400">
+            <p>
+              {start} - {end ? end : "Present"}
+            </p>
+          </div>
+
+          {/* Badge */}
+          <div className="text-[10px] px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 font-medium tracking-wide uppercase">
+            Academic Journey
+          </div>
+        </a>
+      </CardContent>
+    </MagicCard>
+
+    // </Card>
   );
 };
 

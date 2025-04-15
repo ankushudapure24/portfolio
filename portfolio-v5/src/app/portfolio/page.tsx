@@ -11,27 +11,59 @@ import EducationItem from "@/components/education";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { ProjectCard } from "@/components/project-card-new";
 import Certification from "@/components/Certification";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { HackathonCard } from "@/components/hacathon-card-new";
 import Link from "next/link";
 import { ContactCard } from "@/components/contact-card";
-import { VelocityScroll } from "@/components/magicui/scroll-based-velocity";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import AnimatedListDemo from "@/components/animated-lists";
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { WarpBackground } from "@/components/magicui/warp-background";
 import Achievement from "@/components/Achivements";
+import { useEffect, useRef, useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
-  const [hoveredImage, setHoveredImage] = useState("/uni.png");
-  const [showProjects, setShowProjects] = useState(false);
-  const [showAll, setShowAll] = useState(false);
+    const [currentEdu, setCurrentEdu] = useState(0);
+    const [hoveredImage, setHoveredImage] = useState("/uni.png");
+    const [showProjects, setShowProjects] = useState(false);
+    const [showAll, setShowAll] = useState(false);
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
+
+   useEffect(() => {
+     autoScrollInterval.current = setInterval(() => {
+       if (scrollRef.current) {
+         scrollRef.current.scrollBy({
+           left: 350,
+           behavior: "smooth",
+         });
+       }
+     }, 4000);
+
+     return () => {
+       if (autoScrollInterval.current)
+         clearInterval(autoScrollInterval.current);
+     };
+   }, []);
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: -350,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: 350,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -45,32 +77,39 @@ const MyPage = () => {
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
         <AuroraText>Education</AuroraText>
       </h2>
-      <section className="education px-2 sm:px-6 md:px-10">
-        <div className="flex flex-col md:flex-row sm:ml-4 rounded-3xl bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 bg-gray-900">
-          <div className="flex flex-col md:w-1/2 gap-6 m-6 sm:m-10">
+      <section className="education px-4 py-10">
+        <div className="flex flex-col bg-white dark:bg-black rounded-3xl shadow-lg p-6 relative overflow-hidden">
+          {/* Horizontal Scrollable Cards */}
+          <div
+            ref={scrollRef}
+            className="flex overflow-x-auto space-x-8 px-2 pb-4 scroll-smooth"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+            }}
+          >
             {DATA.education.map((edu: any, index: number) => (
-              <div
-                key={index}
-                onMouseEnter={() => setHoveredImage(edu.logoUrl)} 
-                onMouseLeave={() => setHoveredImage("/uni.png")} 
-              >
+              <div key={index} className="min-w-[320px] max-w-[340px]">
                 <EducationItem {...edu} />
               </div>
             ))}
           </div>
-
-          <div className="hidden md:flex w-1/2 items-center justify-center relative p-6">
-            <div className="relative w-[420px] h-[340px] flex items-center justify-center backdrop-blur-md bg-white/10 rounded-2xl shadow-2xl border border-white/20">
-              <Image
-                src={hoveredImage}
-                alt="Education Highlight"
-                width={300}
-                height={280}
-                className="object-contain rounded-2xl transition-all"
-              />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/10 via-white/5 to-transparent opacity-20 pointer-events-none" />
-            </div>
+          {/* Navigation */}
+          <div className="flex justify-center space-x-10 mt-4 mb-4 px-2">
+            <button
+              onClick={scrollLeft}
+              className="bg-gray-200 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-300 dark:hover:bg-gray-600"
+            >
+              ◀
+            </button>
+            <button
+              onClick={scrollRight}
+              className="bg-gray-200 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-300 dark:hover:bg-gray-600"
+            >
+              ▶
+            </button>
           </div>
+          <BorderBeam />
         </div>
       </section>
 
@@ -131,9 +170,6 @@ const MyPage = () => {
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
             <div className="flex flex-col items-center justify-center space-y-6 text-center mb-6">
               <div className="space-y-3">
-                {/* <div className="inline-block rounded-full bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-sm font-semibold shadow-md">
-                  My Projects
-                </div> */}
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold  text-center">
                   <AuroraText>Projects</AuroraText>
                 </h2>
@@ -203,9 +239,6 @@ const MyPage = () => {
         <div className="space-y-12 w-full py-8">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              {/* <VelocityScroll numRows={1}>
-                <AuroraText>Hackathons</AuroraText>
-              </VelocityScroll> */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold  text-center">
                 <AuroraText>Hackathons</AuroraText>
               </h2>
@@ -284,29 +317,11 @@ const MyPage = () => {
                 ))}
               </div>
             </div>
-            {/* <BorderBeam /> */}
           </div>
         </section>
       )}
 
-      {/* <section id="Achivements">
-        <div className="flex flex-col mt-4 items-center">
-          <VelocityScroll numRows={1}>
-            <AuroraText>Achievements</AuroraText>
-          </VelocityScroll>
-        </div>
-        <div className="relative overflow-hidden flex flex-col px-6 py-6 mt-12 mx-6 items-center p-5 rounded-3xl dark:from-black shadow-md">
-          <div className="flex flex-col items-center max-w-6xl">
-            <AnimatedListDemo />
-          </div>
-          <BorderBeam />
-        </div>
-      </section> */}
-
       <section id="Achivements">
-        {/* <VelocityScroll numRows={1}>
-          <AuroraText>Achievements</AuroraText>
-        </VelocityScroll> */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
           <AuroraText>Achievements</AuroraText>
         </h2>
@@ -316,6 +331,7 @@ const MyPage = () => {
             <Card className="flex flex-col sm:w-auto md:w-auto lg:w-[840px]">
               <CardContent className="flex flex-col p-4 items-center">
                 <AnimatedListDemo />
+                {/* <Achievement/> */}
               </CardContent>
             </Card>
           </WarpBackground>
