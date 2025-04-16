@@ -16,8 +16,8 @@ const BLUR_FADE_DELAY = 0.04;
 const ProfileCard = () => {
   const [isVisible, setIsVisible] = useState(false);
   return (
-    <div className="relative flex flex-col items-center text-center px-4 sm:px-6 lg:px-4 ">
-      <Card className="w-full bg-white dark:bg-black rounded-xl shadow-lg overflow-hidden p-8">
+    // <div className="relative flex flex-col items-center text-center px-4 sm:px-6 lg:px-4 ">
+      <Card className="w-full bg-white dark:bg-black rounded-xl shadow-lg overflow-hidden p-10 px-4 sm:px-6 lg:px-4">
         <div
           className="absolute hidden md:block lg:block inset-0 bottom-20 top-10 bg-[url('/pattern.svg')] bg-transparent opacity-40 dark:opacity-60  
     sm:mx-4
@@ -51,7 +51,7 @@ const ProfileCard = () => {
             <TextAnimate>{DATA.description}</TextAnimate>
           </p>
           <div className="w-full mt-6 flex justify-center">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-10 max-w-5xl bg-gradient-to-bl dark:from-gray-950 dark:via-violet-600 dark:to-blue-600 rounded-xl w-full px-2 py-2 shadow-md">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-4 md:gap-8 max-w-5xl bg-gradient-to-bl dark:from-gray-950 dark:via-violet-600 dark:to-blue-600 rounded-xl w-full px-2 py-2 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
               {/* Avatar on the Left (or Top on Mobile) */}
               <div className="flex-shrink-0 m-2">
                 <Avatar className="w-52 h-48 sm:w-48 sm:h-48 md:w-52 md:h-52 border-2 bg-white dark:bg-black border-black dark:border-white rounded-2xl">
@@ -78,7 +78,7 @@ const ProfileCard = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-6">
             {/* <Button variant="default" onClick={() => setIsVisible(!isVisible)}>
               {isVisible ? "Back" : "About Me"}
             </Button> */}
@@ -86,7 +86,7 @@ const ProfileCard = () => {
           </div>
         </CardContent>
       </Card>
-    </div>
+    // </div>
   );
 };
 

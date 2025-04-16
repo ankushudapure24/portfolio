@@ -74,10 +74,10 @@ const MyPage = () => {
       </section>
       <section id="about"></section>
 
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
         <AuroraText>Education</AuroraText>
       </h2>
-      <section className="education px-4 py-10">
+      <section className="education px-10">
         <div className="flex flex-col bg-white dark:bg-black rounded-3xl shadow-lg p-6 relative overflow-hidden">
           {/* Horizontal Scrollable Cards */}
           <div
