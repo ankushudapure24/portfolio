@@ -18,6 +18,7 @@ interface ResumeCardProps {
   badges?: readonly string[];
   period: string;
   description?: string;
+  end?:string;
 }
 export const ResumeCard = ({
   logoUrl,
