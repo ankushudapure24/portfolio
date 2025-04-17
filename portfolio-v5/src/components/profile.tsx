@@ -45,7 +45,7 @@ const ProfileCard = () => {
         />
         <CardContent className="flex mt-12 flex-col items-center gap-6">
           <h1 className="text-6xl sm:text-7xl font-bold text-black dark:text-white">
-            Hey, Hi! I&apos;m <AuroraText>{DATA.name.split(" ")[0]}</AuroraText>
+            Hey Hi! I&apos;m <AuroraText>{DATA.name.split(" ")[0]}</AuroraText>
           </h1>
           <p className="text-lg sm:text-2xl text-gray-600 dark:text-gray-400">
             <TextAnimate>{DATA.description}</TextAnimate>
