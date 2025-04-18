@@ -36,7 +36,7 @@ const MyPage = () => {
      autoScrollInterval.current = setInterval(() => {
        if (scrollRef.current) {
          scrollRef.current.scrollBy({
-           left: 350,
+           left: 320,
            behavior: "smooth",
          });
        }
@@ -77,53 +77,62 @@ const MyPage = () => {
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
         <AuroraText>Education</AuroraText>
       </h2>
-      <section className="education px-10">
-        <div className="flex flex-col bg-white dark:bg-black rounded-3xl shadow-lg p-6 relative overflow-hidden">
-          {/* Horizontal Scrollable Cards */}
+      <section className="education px-4 sm:px-6 md:px-10">
+        <div className="flex flex-col bg-white dark:bg-black rounded-3xl shadow-lg p-4 sm:p-6 relative overflow-hidden">
+          {/* Scrollable Cards */}
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto space-x-8 px-2 pb-4 scroll-smooth"
+            className="flex overflow-x-auto space-x-4 sm:space-x-6 px-1 pb-4 scroll-smooth"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
             }}
           >
             {DATA.education.map((edu: any, index: number) => (
-              <div key={index} className="min-w-[320px] max-w-[340px]">
+              <div
+                key={index}
+                className="min-w-[280px] sm:min-w-[300px] md:min-w-[320px] max-w-[340px] flex-shrink-0"
+              >
                 <EducationItem {...edu} />
               </div>
             ))}
           </div>
-          {/* Navigation */}
-          <div className="flex justify-center space-x-10 mt-4 mb-4 px-2">
+
+          {/* Navigation Buttons */}
+          <div className="flex justify-center space-x-6 sm:space-x-10 mt-4 px-2">
             <button
               onClick={scrollLeft}
-              className="bg-gray-200 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-300 dark:hover:bg-gray-600"
+              className="bg-gray-200 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+              aria-label="Scroll Left"
             >
               ◀
             </button>
             <button
               onClick={scrollRight}
-              className="bg-gray-200 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-300 dark:hover:bg-gray-600"
+              className="bg-gray-200 dark:bg-gray-700 rounded-full p-2 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+              aria-label="Scroll Right"
             >
               ▶
             </button>
           </div>
+
           <BorderBeam />
         </div>
       </section>
 
-      <section id="work" className="w-full sm:px-6 md:px-10">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
+      <section id="work" className="w-full px-4 sm:px-6 md:px-10">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 md:mb-12">
           <AuroraText>Work Experience</AuroraText>
         </h2>
 
-        <div className="relative flex p-12 w-full flex-col items-center justify-center overflow-hidden rounded-3xl border bg-background">
+        <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-3xl border bg-background p-4 sm:p-6 md:p-10">
+          {/* Background Grid */}
           <div className="absolute inset-0 z-0">
             <RetroGrid />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 px-2 sm:px-4 md:px-8 z-10">
+          {/* Work Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 z-10 w-full">
             {DATA.work.map((job) => (
               <WorkCard key={job.company} {...job} />
             ))}

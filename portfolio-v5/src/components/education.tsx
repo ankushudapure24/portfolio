@@ -12,20 +12,20 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
     // <Card className="w-full max-w-[300px] max-h-[400px] rounded-2xl p-4 bg">
     <MagicCard
       gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
-      className="w-[320px] h-[400px] rounded-2xl"
+      className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[320px] h-auto rounded-2xl"
     >
-      <CardContent className="p-3 h-full">
+      <CardContent className="p-4 h-full">
         <a
           href={href}
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "relative cursor-pointer overflow-hidden rounded-2xl border flex flex-col items-center justify-between p-6 gap-5 lg:h-[375px]",
-            "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:hover:bg-gray-800 transition-all duration-300 ease-in-out hover:shadow-lg"
+            "relative cursor-pointer overflow-hidden rounded-2xl border flex flex-col items-center justify-between p-4 gap-5",
+            "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:hover:bg-gray-800 transition-all duration-300 ease-in-out hover:shadow-lg h-full"
           )}
         >
           {/* Circular Image */}
-          <div className="rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600 shadow-md w-24 h-24 sm:w-28 sm:h-28">
+          <div className="rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600 shadow-md w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28">
             <Image
               src={logoUrl}
               alt={school}
@@ -36,8 +36,8 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
           </div>
 
           {/* Text Details */}
-          <div className="text-center">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+          <div className="text-center px-2">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
               {school}
             </h3>
             <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
