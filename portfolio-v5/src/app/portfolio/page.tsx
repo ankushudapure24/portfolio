@@ -99,10 +99,10 @@ const MyPage = () => {
       </h2>
       <section className="education px-4 sm:px-6 md:px-10">
         <div className="flex flex-col bg-white dark:bg-black rounded-3xl shadow-lg p-4 sm:p-6 relative overflow-hidden">
-          {/* Scrollable Cards */}
+         
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto space-x-4 sm:space-x-6 px-1 pb-4 scroll-smooth"
+            className="flex overflow-x-auto space-x-4 sm:space-x-6 mt-6 px-1 pb-4 scroll-smooth"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
@@ -118,7 +118,7 @@ const MyPage = () => {
             ))}
           </div>
 
-          {/* Navigation Buttons */}
+       
           <div className="flex justify-center space-x-6 sm:space-x-10 mt-4 px-2">
             <button
               onClick={scrollLeft}

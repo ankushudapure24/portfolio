@@ -55,20 +55,22 @@ const WorkCard = ({
       </figure>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg max-w-md w-full">
-            <h2 className="text-lg font-semibold dark:text-white">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-4 sm:px-6">
+          <div className="bg-white dark:bg-gray-900 p-4 sm:p-6 rounded-lg shadow-lg w-full max-w-md sm:max-w-lg">
+            <h2 className="text-lg sm:text-xl font-semibold dark:text-white">
               {company} - {title}
             </h2>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+            <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mt-2">
               {description}
             </p>
-            <button
-              onClick={() => setShowModal(false)}
-              className="mt-4 text-sm text-red-500 dark:text-red-400 underline"
-            >
-              Close
-            </button>
+            <div className="flex justify-end">
+              <button
+                onClick={() => setShowModal(false)}
+                className="mt-4 text-sm text-red-500 dark:text-red-400 underline justify-center"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

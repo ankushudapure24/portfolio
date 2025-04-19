@@ -14,9 +14,12 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <div className="pointer-events-none h-full max-h-48 fixed inset-y-0 top-1/2 left-0 ml-2 z-30 mx-auto mb-4 flex items-center justify-center origin-left w-full max-w-12">
-      {/* <div className="fixed left-0 inset-w-0 h-16 w-full bg-background to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)] dark:bg-background"></div> */}
-      <Dock className="z-50 pointer-events-auto relative mx-auto flex flex-col min-w-full w-full items-center py-1 bg-background [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)] transform-gpu dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset] ">
+    <div className="fixed top-1/2 left-0 z-30 transform -translate-y-1/2">
+      <Dock
+        className="z-50 pointer-events-auto flex flex-col items-center bg-background py-1 px-2 rounded-xl
+    shadow-md transition-all duration-300 ease-in-out
+    dark:border dark:border-white/10 dark:shadow-[0_-20px_80px_-20px_#ffffff1f_inset]"
+      >
         {Object.entries(DATA.contact.social)
           .filter(([_, social]) => social.navbar)
           .map(([name, social]) => (
@@ -33,14 +36,14 @@ export default function Navbar() {
                     <social.icon className="size-4" />
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent side="right">
                   <p>{name}</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>
           ))}
       </Dock>
-    </div>
+    </div>  
   );
 }
 

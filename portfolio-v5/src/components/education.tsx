@@ -14,7 +14,7 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
       gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
       className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[320px] h-auto rounded-2xl"
     >
-      <CardContent className="p-4 h-full">
+      <CardContent className="p-4 h-[360px]">
         <a
           href={href}
           target="_blank"
