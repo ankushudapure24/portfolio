@@ -35,7 +35,6 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
             />
           </div>
 
-          {/* Text Details */}
           <div className="text-center px-2">
             <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
               {school}
@@ -45,14 +44,12 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
             </p>
           </div>
 
-          {/* Duration */}
           <div className="text-xs text-gray-500 dark:text-gray-400">
             <p>
               {start} - {end ? end : "Present"}
             </p>
           </div>
 
-          {/* Badge */}
           <div className="text-[10px] px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 font-medium tracking-wide uppercase">
             Academic Journey
           </div>
@@ -60,7 +57,6 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
       </CardContent>
     </MagicCard>
 
-    // </Card>
   );
 };
 

@@ -30,8 +30,11 @@ const MyPage = () => {
     const [showProjects, setShowProjects] = useState(false);
     const [showAll, setShowAll] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
+    const scrollRefCert = useRef<HTMLDivElement>(null);
+
     const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
 
+    //for education cards
    useEffect(() => {
      autoScrollInterval.current = setInterval(() => {
        if (scrollRef.current) {
@@ -41,12 +44,30 @@ const MyPage = () => {
          });
        }
      }, 4000);
-
      return () => {
        if (autoScrollInterval.current)
          clearInterval(autoScrollInterval.current);
      };
    }, []);
+
+
+//for certificates
+   useEffect(() => {
+     autoScrollInterval.current = setInterval(() => {
+       if (scrollRefCert.current) {
+        scrollRefCert.current.scrollBy({
+          left: 320,
+          behavior: "smooth",
+        });
+       }
+     }, 4000);
+     return () => {
+       if (autoScrollInterval.current)
+         clearInterval(autoScrollInterval.current);
+     };
+   }, []);
+
+
   const scrollLeft = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
@@ -73,7 +94,6 @@ const MyPage = () => {
         </div>
       </section>
       <section id="about"></section>
-
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
         <AuroraText>Education</AuroraText>
       </h2>
@@ -119,7 +139,6 @@ const MyPage = () => {
           <BorderBeam />
         </div>
       </section>
-
       <section id="work" className="w-full px-4 sm:px-6 md:px-10">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 md:mb-12">
           <AuroraText>Work Experience</AuroraText>
@@ -141,7 +160,6 @@ const MyPage = () => {
           <BorderBeam />
         </div>
       </section>
-
       <section id="skills" className="items-center flex flex-col">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
           <AuroraText>Skills</AuroraText>
@@ -173,7 +191,6 @@ const MyPage = () => {
           </Marquee>
         </div>
       </section>
-
       <section id="projects">
         <div className="relative w-full py-8 flex flex-col items-center rounded-3xl">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
@@ -243,7 +260,6 @@ const MyPage = () => {
           </button>
         </div>
       </section>
-
       <section id="hackathons">
         <div className="space-y-12 w-full py-8">
           <BlurFade delay={BLUR_FADE_DELAY * 13}>
@@ -286,7 +302,7 @@ const MyPage = () => {
             {DATA.hackathons.length > 8 && (
               <div className="flex justify-center mt-4">
                 <button
-                  className="pinline-block rounded-lg bg-black text-white dark:bg-white dark:text-black px-4 py-1 text-lg shadow-md"
+                  className="mt-4 rounded-xl bg-black px-6 py-3 text-lg font-semibold text-white transition-all hover:scale-105 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-300"
                   onClick={() => setShowAll(!showAll)}
                 >
                   {showAll ? "Show Less" : "Show All"}
@@ -296,7 +312,6 @@ const MyPage = () => {
           </BlurFade>
         </div>
       </section>
-
       {DATA2.certifications && DATA2.certifications.length > 0 && (
         <section className="Certification relative">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
@@ -305,7 +320,8 @@ const MyPage = () => {
 
           <div className="relative overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 sm:m-6 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-md">
             <div
-              className={`relative flex gap-4 items-center my-4 sm:my-6 w-full max-w-[1360px] px-2 sm:px-6 z-10 ${
+              ref={scrollRefCert}
+              className={`relative flex gap-4 items-center my-4 sm:my-6 w-full max-w-[1360px] px-2 sm:px-6 z-10 scroll-smooth ${
                 DATA2.certifications.length >= 4 ? "overflow-x-auto" : ""
               }`}
               style={{
@@ -319,34 +335,36 @@ const MyPage = () => {
                     ? "min-w-max"
                     : "w-full justify-center flex-wrap"
                 }`}
-                style={{ scrollBehavior: "smooth" }}
               >
                 {DATA2.certifications.map((cert, index) => (
                   <Certification key={index} {...cert} />
                 ))}
               </div>
             </div>
+            <p className="text-white text-sm mt-2 italic text-center">
+              Scroll horizontally to explore more certificates →
+            </p>
           </div>
         </section>
       )}
-
       <section id="Achivements">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
           <AuroraText>Achievements</AuroraText>
         </h2>
 
         <div className="flex flex-col items-center">
-          <WarpBackground className="w-full max-w-[1430px] px-4 sm:px-6 md:px-8 my-12 flex justify-center">
-            <Card className="flex flex-col sm:w-auto md:w-auto lg:w-[840px]">
-              <CardContent className="flex flex-col p-4 items-center">
-                <AnimatedListDemo />
-                {/* <Achievement/> */}
-              </CardContent>
-            </Card>
-          </WarpBackground>
+          {/* <WarpBackground className="w-full max-w-[1430px] px-4 sm:px-6 md:px-8 my-12 flex justify-center">  */}
+          <Card className="flex flex-col sm:w-auto md:w-auto lg:w-[840px]">
+            <CardContent className="flex flex-col p-4 items-center">
+              {/* <AnimatedListDemo /> */}
+              {DATA2.achievements.map((item, idx) => (
+                <Achievement {...item} key={idx} />
+              ))}
+            </CardContent>
+          </Card>
+          {/* </WarpBackground> */}
         </div>
       </section>
-
       <section id="contact">
         <div className="flex flex-col items-center justify-center gap-6 px-6 py-6 text-center">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
