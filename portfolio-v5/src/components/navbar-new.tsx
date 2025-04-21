@@ -28,18 +28,6 @@ const NavbarTop: React.FC = () => {
     <nav className="w-full fixed top-0 left-0 z-50 backdrop-blur-md bg-white/30 dark:bg-gray-900/30 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* <a href="/testing" className="flex items-center">
-            <span className="text-xl font-bold text-gray-900 dark:text-white">
-              {DATA.name}
-            </span>
-          </a> */}
-          {/* <Link className="flex items-center text-xl  mr-6" href="/portfolio">
-            <span className="font-bold">
-              <AnimatedGradientText colorFrom="#0070F3" colorTo="#38bdf8">
-                {DATA.name}
-              </AnimatedGradientText>
-            </span>
-          </Link> */}
           <div className="group relative flex items-center justify-center rounded-full px-4 py-2 shadow-[inset_0_-8px_10px_#8fdfff1f] transition-shadow duration-500 ease-out hover:shadow-[inset_0_-5px_10px_#8fdfff3f] ">
             <span
               className={cn(
@@ -73,22 +61,13 @@ const NavbarTop: React.FC = () => {
                 {item.label}
               </a>
             ))}
-            {/* <Separator orientation="vertical" className="h-full py-2" />
-            <ModeToggle /> */}
           </div>
-          {/* <a
-            href="#contact"
-            className="hidden md:block bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-          >
-            Hire Me
-          </a> */}
           <div className="flex gap-6">
-            <ShinyButton
-              // onClick={openModal}
-              className="hidden md:block rounded-full border"
-            >
-              Hire Me
-            </ShinyButton>
+            <a href="#contact">
+              <ShinyButton className="hidden md:block rounded-full border">
+                Hire Me
+              </ShinyButton>
+            </a>
             <ModeToggle />
           </div>
           <button
@@ -111,12 +90,6 @@ const NavbarTop: React.FC = () => {
               {item.label}
             </a>
           ))}
-          {/* <a
-            href="/hire"
-            className="block text-center bg-blue-600 text-white px-4 py-2 mt-2 rounded-lg hover:bg-blue-700 transition"
-          >
-            Hire Me
-          </a> */}
           <a className="md:hidden backdrop-blur-md bg-white/30 dark:bg-gray-900/30">
             Theme
           </a>
