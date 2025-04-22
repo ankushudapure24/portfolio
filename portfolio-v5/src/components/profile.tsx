@@ -51,7 +51,7 @@ const ProfileCard = () => {
           <TextAnimate>{DATA.description}</TextAnimate>
         </p>
         {/* <div className="w-full mt-6 flex justify-center"> */}
-        <div className="flex flex-col mt-6 md:flex-row items-center md:items-start gap-4 md:gap-8 max-w-5xl bg-gradient-to-bl dark:from-gray-950 dark:via-violet-600 dark:to-blue-600 rounded-xl w-full px-2 py-2 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
+        <div className="flex flex-col mt-6 md:flex-row items-center md:items-start gap-4 md:gap-8 max-w-5xl bg-gradient-to-bl dark:from-gray-900 dark:via-violet-600 dark:to-blue-600 rounded-xl w-full px-2 py-1 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
           <div className="flex-shrink-0 m-2">
             <Avatar className="w-52 h-48 sm:w-48 sm:h-48 md:w-52 md:h-52 border-2 bg-white dark:bg-black border-black dark:border-white rounded-2xl">
               <AvatarImage src={DATA.avatarUrl} />
@@ -60,7 +60,7 @@ const ProfileCard = () => {
           </div>
 
           <div
-            className="relative h-auto md:h-52 p-3 m-2 bg-white/10 dark:bg-black/35 rounded-2xl overflow-auto text-center"
+            className="relative h-auto md:h-52 p-3 m-2 bg-violet-100 dark:bg-black/35 rounded-2xl overflow-auto text-center"
             // style={{
             //   scrollbarWidth: "none",
             //   msOverflowStyle: "none",
@@ -71,15 +71,10 @@ const ProfileCard = () => {
                 {DATA.summary || "Here's something about me..."}
               </Markdown>
             </BlurFade>
-            {/* <BorderBeam /> */}
           </div>
         </div>
-        {/* </div> */}
 
         <div className="flex gap-4 mt-6">
-          {/* <Button variant="default" onClick={() => setIsVisible(!isVisible)}>
-              {isVisible ? "Back" : "About Me"}
-            </Button> */}
           <Button
             variant="default"
             onClick={() => {

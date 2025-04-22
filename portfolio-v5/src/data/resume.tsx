@@ -12,19 +12,82 @@ export const DATA = {
   summary:
     "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
   avatarUrl: "/mee.png",
+  // skills: [
+  //   "React",
+  //   "Next.js",
+  //   "Typescript",
+  //   "Node.js",
+  //   "Python",
+  //   "Go",
+  //   "Postgres",
+  //   "Docker",
+  //   "Kubernetes",
+  //   "Java",
+  //   "C++",
+  // ],
   skills: [
-    "React",
-    "Next.js",
-    "Typescript",
-    "Node.js",
-    "Python",
-    "Go",
-    "Postgres",
-    "Docker",
-    "Kubernetes",
-    "Java",
-    "C++",
+    {
+      name: "React",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+    },
+    {
+      name: "Next.js",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
+    },
+    {
+      name: "Typescript",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/f/f5/Typescript.svg",
+    },
+    {
+      name: "Node.js",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
+    },
+    {
+      name: "Python",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
+    },
+    {
+      name: "Go",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg",
+    },
+    {
+      name: "Postgres",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
+    },
+    {
+      name: "Docker",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg",
+    },
+    {
+      name: "Kubernetes",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
+    },
+    {
+      name: "Java",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg",
+    },
+    {
+      name: "C++",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg",
+    },
+    {
+      name: "HTML5",
+      icons_url:
+        "https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg",
+    },
   ],
+
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/blog", icon: NotebookIcon, label: "Blog" },
@@ -342,6 +405,7 @@ export const DATA = {
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
     },
   ],
+
   hackathons: [
     {
       title: "Hack Western 5",
@@ -710,94 +774,23 @@ export const DATA = {
         },
       ],
     },
-    // {
-    //   title: "Portal Hackathon",
-    //   dates: "October 29, 2016",
-    //   location: "Kingston, Ontario",
-    //   description:
-    //     "Developed an internal widget for uploading assignments using Waterloo's portal app",
-    //   image:
-    //     "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/portal-hackathon.png",
-    //   links: [
-    //     {
-    //       title: "Source",
-    //       icon: <Icons.github className="h-4 w-4" />,
-    //       href: "https://github.com/UWPortalSDK/crowmark",
-    //     },
-    //   ],
-    // },
-  ],
-} as const;
-
-//my data for practice
-export const DATA2 = {
-  title: "My Projects",
-  text: "Blur text",
-  text2: "Slide up text",
-
-  skills: [
     {
-      name: "React",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-    },
-    {
-      name: "Next.js",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg",
-    },
-    {
-      name: "Typescript",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/f/f5/Typescript.svg",
-    },
-    {
-      name: "Node.js",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg",
-    },
-    {
-      name: "Python",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg",
-    },
-    {
-      name: "Go",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/0/05/Go_Logo_Blue.svg",
-    },
-    {
-      name: "Postgres",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg",
-    },
-    {
-      name: "Docker",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg",
-    },
-    {
-      name: "Kubernetes",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/3/39/Kubernetes_logo_without_workmark.svg",
-    },
-    {
-      name: "Java",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg",
-    },
-    {
-      name: "C++",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg",
-    },
-    {
-      name: "HTML5",
-      icons_url:
-        "https://upload.wikimedia.org/wikipedia/commons/3/38/HTML5_Badge.svg",
+      title: "Portal Hackathon",
+      dates: "October 29, 2016",
+      location: "Kingston, Ontario",
+      description:
+        "Developed an internal widget for uploading assignments using Waterloo's portal app",
+      image:
+        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/hackline/portal-hackathon.png",
+      links: [
+        {
+          title: "Source",
+          icon: <Icons.github className="h-4 w-4" />,
+          href: "https://github.com/UWPortalSDK/crowmark",
+        },
+      ],
     },
   ],
-
   certifications: [
     {
       title: "Machine Learning Certificate",
@@ -852,6 +845,7 @@ export const DATA2 = {
         "Certified in managing and deploying applications on Google Cloud infrastructure.",
     },
   ],
+
   achievements: [
     {
       title: "1st Place in Hackathon",
@@ -895,4 +889,16 @@ export const DATA2 = {
         "Created an intuitive health-tracking mobile app with gamification elements.",
     },
   ],
+} as const;
+
+//my data for practice
+export const DATA2 = {
+  title: "My Projects",
+  text: "Blur text",
+  text2: "Slide up text",
+
+ 
+
+  
+ 
 } as const;

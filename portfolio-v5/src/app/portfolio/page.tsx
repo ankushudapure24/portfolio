@@ -16,17 +16,13 @@ import { HackathonCard } from "@/components/hacathon-card-new";
 import Link from "next/link";
 import { ContactCard } from "@/components/contact-card";
 import { AuroraText } from "@/components/magicui/aurora-text";
-import AnimatedListDemo from "@/components/animated-lists";
 import { Card, CardContent } from "@/components/ui/card";
-import { WarpBackground } from "@/components/magicui/warp-background";
 import Achievement from "@/components/Achivements";
 import { useEffect, useRef, useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
-    const [currentEdu, setCurrentEdu] = useState(0);
-    const [hoveredImage, setHoveredImage] = useState("/uni.png");
     const [showProjects, setShowProjects] = useState(false);
     const [showAll, setShowAll] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -99,7 +95,6 @@ const MyPage = () => {
       </h2>
       <section className="education px-4 sm:px-6 md:px-10">
         <div className="flex flex-col bg-white dark:bg-black rounded-3xl shadow-lg p-4 sm:p-6 relative overflow-hidden">
-         
           <div
             ref={scrollRef}
             className="flex overflow-x-auto space-x-4 sm:space-x-6 mt-6 px-1 pb-4 scroll-smooth"
@@ -118,7 +113,6 @@ const MyPage = () => {
             ))}
           </div>
 
-       
           <div className="flex justify-center space-x-6 sm:space-x-10 mt-4 px-2">
             <button
               onClick={scrollLeft}
@@ -167,7 +161,7 @@ const MyPage = () => {
 
         <div className="relative flex w-full max-w-[1400px] items-center justify-center rounded-lg gap-2 p-1 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
           <Marquee reverse pauseOnHover className="[--duration:20s] flex p-4">
-            {DATA2.skills.map((skill, index) => (
+            {DATA.skills.map((skill, index) => (
               <div
                 key={index}
                 className="w-32 h-40 bg-white dark:bg-gray-800 border-2 border-indigo-950 dark:border-indigo-600 rounded-xl shadow-xl flex flex-col items-center justify-between p-4 transform transition-transform duration-300 hover:scale-105 hover:border-blue-500 group"
@@ -260,69 +254,71 @@ const MyPage = () => {
           </button>
         </div>
       </section>
-      <section id="hackathons">
-        <div className="space-y-12 w-full py-8">
-          <BlurFade delay={BLUR_FADE_DELAY * 13}>
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold  text-center">
-                <AuroraText>Hackathons</AuroraText>
-              </h2>
-              <div className="space-y-2">
-                <div>
-                  <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
-                    I like building things
-                  </h2>
+      {DATA.hackathons && DATA.hackathons.length > 0 && (
+        <section id="hackathons">
+          <div className="space-y-12 w-full py-8">
+            <BlurFade delay={BLUR_FADE_DELAY * 13}>
+              <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold  text-center">
+                  <AuroraText>Hackathons</AuroraText>
+                </h2>
+                <div className="space-y-2">
+                  <div>
+                    <h2 className="text-4xl font-extrabold sm:text-5xl bg-gradient-to-r from-blue-400 to-indigo-600 inline-block bg-clip-text text-transparent">
+                      I like building things
+                    </h2>
+                  </div>
+                  <TextAnimate className="text-gray-600 dark:text-gray-300 md:text-lg lg:text-base/relaxed xl:text-lg/relaxed max-w-3xl mx-auto">
+                    {`During my time in university, I attended ${DATA.hackathons.length}+ hackathons. People from around the country would come together and build incredible things in 2-3 days. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.`}
+                  </TextAnimate>
                 </div>
-                <TextAnimate className="text-gray-600 dark:text-gray-300 md:text-lg lg:text-base/relaxed xl:text-lg/relaxed max-w-3xl mx-auto">
-                  {`During my time in university, I attended ${DATA.hackathons.length}+ hackathons. People from around the country would come together and build incredible things in 2-3 days. It was eye-opening to see the endless possibilities brought to life by a group of motivated and passionate individuals.`}
-                </TextAnimate>
               </div>
-            </div>
-          </BlurFade>
-          <BlurFade delay={BLUR_FADE_DELAY * 14}>
-            <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 m-5 sm:m-10 gap-4 items-center">
-              {DATA.hackathons
-                .slice(0, showAll ? DATA.hackathons.length : 8)
-                .map((project, id) => (
-                  <BlurFade
-                    key={project.title + project.dates}
-                    delay={BLUR_FADE_DELAY * 15 + id * 0.05}
+            </BlurFade>
+            <BlurFade delay={BLUR_FADE_DELAY * 14}>
+              <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 m-5 sm:m-10 gap-4 items-center">
+                {DATA.hackathons
+                  .slice(0, showAll ? DATA.hackathons.length : 8)
+                  .map((project, id) => (
+                    <BlurFade
+                      key={project.title + project.dates}
+                      delay={BLUR_FADE_DELAY * 15 + id * 0.05}
+                    >
+                      <HackathonCard
+                        title={project.title}
+                        description={project.description}
+                        location={project.location}
+                        dates={project.dates}
+                        image={project.image}
+                        links={project.links}
+                      />
+                    </BlurFade>
+                  ))}
+              </div>
+              {DATA.hackathons.length > 8 && (
+                <div className="flex justify-center mt-4">
+                  <button
+                    className="mt-4 rounded-xl bg-black px-6 py-3 text-lg font-semibold text-white transition-all hover:scale-105 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-300"
+                    onClick={() => setShowAll(!showAll)}
                   >
-                    <HackathonCard
-                      title={project.title}
-                      description={project.description}
-                      location={project.location}
-                      dates={project.dates}
-                      image={project.image}
-                      links={project.links}
-                    />
-                  </BlurFade>
-                ))}
-            </div>
-            {DATA.hackathons.length > 8 && (
-              <div className="flex justify-center mt-4">
-                <button
-                  className="mt-4 rounded-xl bg-black px-6 py-3 text-lg font-semibold text-white transition-all hover:scale-105 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-300"
-                  onClick={() => setShowAll(!showAll)}
-                >
-                  {showAll ? "Show Less" : "Show All"}
-                </button>
-              </div>
-            )}
-          </BlurFade>
-        </div>
-      </section>
-      {DATA2.certifications && DATA2.certifications.length > 0 && (
+                    {showAll ? "Show Less" : "Show All"}
+                  </button>
+                </div>
+              )}
+            </BlurFade>
+          </div>
+        </section>
+      )}
+      {DATA.certifications && DATA.certifications.length > 0 && (
         <section className="Certification relative">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
             <AuroraText>Certificates</AuroraText>
           </h2>
 
-          <div className="relative overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 sm:m-6 flex flex-col items-center bg-gradient-to-r from-indigo-700 via-blue-400 to-indigo-600 p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-md">
+          <div className="relative overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 sm:m-6 flex flex-col items-center p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
             <div
               ref={scrollRefCert}
               className={`relative flex gap-4 items-center my-4 sm:my-6 w-full max-w-[1360px] px-2 sm:px-6 z-10 scroll-smooth ${
-                DATA2.certifications.length >= 4 ? "overflow-x-auto" : ""
+                DATA.certifications.length >= 4 ? "overflow-x-auto" : ""
               }`}
               style={{
                 scrollbarWidth: "none",
@@ -331,17 +327,17 @@ const MyPage = () => {
             >
               <div
                 className={`flex gap-4 items-center p-3 ${
-                  DATA2.certifications.length >= 4
+                  DATA.certifications.length >= 4
                     ? "min-w-max"
                     : "w-full justify-center flex-wrap"
                 }`}
               >
-                {DATA2.certifications.map((cert, index) => (
+                {DATA.certifications.map((cert, index) => (
                   <Certification key={index} {...cert} />
                 ))}
               </div>
             </div>
-            <p className="text-white text-sm mt-2 italic text-center">
+            <p className="text-black dark:text-gray-200 text-sm mt-2 italic text-center">
               Scroll horizontally to explore more certificates →
             </p>
           </div>
@@ -356,13 +352,11 @@ const MyPage = () => {
           {/* <WarpBackground className="w-full max-w-[1430px] px-4 sm:px-6 md:px-8 my-12 flex justify-center">  */}
           <Card className="flex flex-col sm:w-auto md:w-auto lg:w-[840px]">
             <CardContent className="flex flex-col p-4 items-center">
-              {/* <AnimatedListDemo /> */}
-              {DATA2.achievements.map((item, idx) => (
+              {DATA.achievements.map((item, idx) => (
                 <Achievement {...item} key={idx} />
               ))}
             </CardContent>
           </Card>
-          {/* </WarpBackground> */}
         </div>
       </section>
       <section id="contact">

@@ -63,12 +63,14 @@ const NavbarTop: React.FC = () => {
             ))}
           </div>
           <div className="flex gap-6">
+            <div className="hidden md:block">
+              <ModeToggle />
+            </div>
             <a href="#contact">
               <ShinyButton className="hidden md:block rounded-full border">
                 Hire Me
               </ShinyButton>
             </a>
-            <ModeToggle />
           </div>
           <button
             className="md:hidden text-gray-700 dark:text-gray-300"
