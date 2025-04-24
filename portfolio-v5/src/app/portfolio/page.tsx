@@ -97,7 +97,7 @@ const MyPage = () => {
         <div className="flex flex-col bg-white dark:bg-black rounded-3xl shadow-lg p-4 sm:p-6 relative overflow-hidden">
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto space-x-4 sm:space-x-6 mt-6 px-1 pb-4 scroll-smooth"
+            className="flex overflow-x-auto space-x-4 sm:space-x-6 mt-6 px-6 pb-4 scroll-smooth"
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
@@ -145,7 +145,7 @@ const MyPage = () => {
           </div>
 
           {/* Work Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 z-10 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mx-12 w-full">
             {DATA.work.map((job) => (
               <WorkCard key={job.company} {...job} />
             ))}
@@ -347,8 +347,8 @@ const MyPage = () => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
           <AuroraText>Achievements</AuroraText>
         </h2>
-
-        <div className="flex flex-col items-center">
+<div className="relative overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 sm:m-6 flex flex-col items-center p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
+        {/* <div className="flex flex-col items-center"> */}
           {/* <WarpBackground className="w-full max-w-[1430px] px-4 sm:px-6 md:px-8 my-12 flex justify-center">  */}
           <Card className="flex flex-col sm:w-auto md:w-auto lg:w-[840px]">
             <CardContent className="flex flex-col p-4 items-center">
@@ -357,7 +357,7 @@ const MyPage = () => {
               ))}
             </CardContent>
           </Card>
-        </div>
+        </div>  
       </section>
       <section id="contact">
         <div className="flex flex-col items-center justify-center gap-6 px-6 py-6 text-center">
