@@ -14,7 +14,6 @@ import { AnimatePresence, motion } from "framer-motion";
 const BLUR_FADE_DELAY = 0.04;
 
 const ProfileCard = () => {
-  const [isVisible, setIsVisible] = useState(false);
   return (
     // <div className="relative flex flex-col items-center text-center px-4 sm:px-6 lg:px-4 ">
     <Card className="w-full bg-white dark:bg-black rounded-xl shadow-lg overflow-hidden py-10 px-4 sm:px-6 lg:px-4">
@@ -43,8 +42,8 @@ const ProfileCard = () => {
         height={150}
         className="absolute bottom-[-10px] right-[-10px] rotate-180 opacity-85 pointer-events-none dark:invert hidden sm:hidden md:hidden lg:block"
       />
-      <CardContent className="flex mt-12 flex-col items-center gap-6">
-        <h1 className="text-6xl sm:text-7xl font-bold text-black dark:text-white">
+      <CardContent className="flex mx-2 md:mt-12 flex-col items-center gap-5">
+        <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white">
           Hey Hi! I&apos;m <AuroraText>{DATA.name.split(" ")[0]}</AuroraText>
         </h1>
         <p className="text-lg sm:text-2xl text-gray-600 dark:text-gray-400">
@@ -53,28 +52,28 @@ const ProfileCard = () => {
         {/* <div className="w-full mt-6 flex justify-center"> */}
         <div className="flex flex-col mt-6 md:flex-row items-center md:items-start gap-4 md:gap-8 max-w-5xl bg-gradient-to-bl dark:from-gray-900 dark:via-violet-600 dark:to-blue-600 rounded-xl w-full px-2 py-1 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
           <div className="flex-shrink-0 m-2">
-            <Avatar className="w-52 h-48 sm:w-48 sm:h-48 md:w-52 md:h-52 border-2 bg-white dark:bg-black border-black dark:border-white rounded-2xl">
+            <Avatar className="w-60 h-52 sm:w-48 sm:h-48 md:w-52 md:h-52 border-2 bg-white dark:bg-black border-black dark:border-white rounded-2xl">
               <AvatarImage src={DATA.avatarUrl} />
               <AvatarFallback>{DATA.name.charAt(0)}</AvatarFallback>
             </Avatar>
           </div>
 
           <div
-            className="relative h-auto md:h-52 p-3 m-2 bg-violet-100 dark:bg-black/35 rounded-2xl overflow-auto text-center"
+            className="relative h-auto md:h-52 p-3 m-2 mx-4 mb-4 md:m-2 bg-violet-100 dark:bg-black/35 rounded-2xl overflow-auto text-center"
             // style={{
             //   scrollbarWidth: "none",
             //   msOverflowStyle: "none",
             // }}
           >
             <BlurFade delay={0.2}>
-              <Markdown className="prose dark:prose-invert text-sm sm:text-base md:text-xl text-left">
+              <Markdown className="prose dark:prose-invert text-base sm:text-base md:text-xl text-left">
                 {DATA.summary || "Here's something about me..."}
               </Markdown>
             </BlurFade>
           </div>
         </div>
 
-        <div className="flex gap-4 mt-6">
+        <div className="flex gap-4 mt-6 md:mb-6">
           <Button
             variant="default"
             onClick={() => {

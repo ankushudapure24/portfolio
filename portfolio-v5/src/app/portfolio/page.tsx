@@ -23,51 +23,45 @@ import { useEffect, useRef, useState } from "react";
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
-    const [showProjects, setShowProjects] = useState(false);
-    const [showAll, setShowAll] = useState(false);
-    const scrollRef = useRef<HTMLDivElement>(null);
-    const scrollRefCert = useRef<HTMLDivElement>(null);
+  const [showProjects, setShowProjects] = useState(false);
+  const [showAll, setShowAll] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRefCert = useRef<HTMLDivElement>(null);
 
-    const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
+  const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
 
-    //for education cards
-   useEffect(() => {
-     autoScrollInterval.current = setInterval(() => {
-       if (scrollRef.current) {
-         scrollRef.current.scrollBy({
-           left: 320,
-           behavior: "smooth",
-         });
-       }
-     }, 4000);
-     return () => {
-       if (autoScrollInterval.current)
-         clearInterval(autoScrollInterval.current);
-     };
-   }, []);
+  //for education cards
+  useEffect(() => {
+    autoScrollInterval.current = setInterval(() => {
+      if (scrollRef.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
 
+        // Check if scrolled to (or near) the end
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          // If at the end, scroll back to the start smoothly
+          scrollRef.current.scrollTo({
+            left: 0,
+            behavior: "smooth",
+          });
+        } else {
+          // Else, scroll right by 320px smoothly
+          scrollRef.current.scrollBy({
+            left: 330,
+            behavior: "smooth",
+          });
+        }
+      }
+    }, 4000);
 
-//for certificates
-   useEffect(() => {
-     autoScrollInterval.current = setInterval(() => {
-       if (scrollRefCert.current) {
-        scrollRefCert.current.scrollBy({
-          left: 320,
-          behavior: "smooth",
-        });
-       }
-     }, 4000);
-     return () => {
-       if (autoScrollInterval.current)
-         clearInterval(autoScrollInterval.current);
-     };
-   }, []);
-
+    return () => {
+      if (autoScrollInterval.current) clearInterval(autoScrollInterval.current);
+    };
+  }, []);
 
   const scrollLeft = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: -350,
+        left: -330,
         behavior: "smooth",
       });
     }
@@ -76,11 +70,39 @@ const MyPage = () => {
   const scrollRight = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: 350,
+        left: 330,
         behavior: "smooth",
       });
     }
   };
+
+  //for certificates
+  useEffect(() => {
+    autoScrollInterval.current = setInterval(() => {
+      if (scrollRefCert.current) {
+        const { scrollLeft, scrollWidth, clientWidth } = scrollRefCert.current;
+
+        // Check if we are at the end
+        if (scrollLeft + clientWidth >= scrollWidth - 10) {
+          // Reset to start
+          scrollRefCert.current.scrollTo({
+            left: 0,
+            behavior: "smooth",
+          });
+        } else {
+          // Scroll normally by 320px
+          scrollRefCert.current.scrollBy({
+            left: 320,
+            behavior: "smooth",
+          });
+        }
+      }
+    }, 4000);
+
+    return () => {
+      if (autoScrollInterval.current) clearInterval(autoScrollInterval.current);
+    };
+  }, []);
 
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
@@ -93,8 +115,8 @@ const MyPage = () => {
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
         <AuroraText>Education</AuroraText>
       </h2>
-      <section className="education px-4 sm:px-6 md:px-10">
-        <div className="flex flex-col bg-white dark:bg-black rounded-3xl shadow-lg p-4 sm:p-6 relative overflow-hidden">
+      <section className="education">
+        <div className="flex flex-col mx-10 mb-10 bg-white dark:bg-black rounded-3xl shadow-lg p-4 sm:p-6 relative overflow-hidden">
           <div
             ref={scrollRef}
             className="flex overflow-x-auto space-x-4 sm:space-x-6 mt-6 px-6 pb-4 scroll-smooth"
@@ -133,33 +155,33 @@ const MyPage = () => {
           <BorderBeam />
         </div>
       </section>
-      <section id="work" className="w-full px-4 sm:px-6 md:px-10">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 md:mb-12">
-          <AuroraText>Work Experience</AuroraText>
-        </h2>
+      {DATA.work && DATA.work.length > 0 && (
+        <section id="work" className="w-full px-4 sm:px-6 md:px-10">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 md:mb-12">
+            <AuroraText>Work Experience</AuroraText>
+          </h2>
 
-        <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-3xl border bg-background p-4 sm:p-6 md:p-10">
-          {/* Background Grid */}
-          <div className="absolute inset-0 z-0">
-            <RetroGrid />
+          <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-3xl border bg-background p-4 sm:p-6 md:p-10">
+            <div className="absolute inset-0 z-0">
+              <RetroGrid />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {DATA.work.map((job) => (
+                <WorkCard key={job.company} {...job} />
+              ))}
+            </div>
+
+            <BorderBeam />
           </div>
-
-          {/* Work Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mx-12 w-full">
-            {DATA.work.map((job) => (
-              <WorkCard key={job.company} {...job} />
-            ))}
-          </div>
-
-          <BorderBeam />
-        </div>
-      </section>
+        </section>
+      )}
       <section id="skills" className="items-center flex flex-col">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
           <AuroraText>Skills</AuroraText>
         </h2>
 
-        <div className="relative flex w-full max-w-[1400px] items-center justify-center rounded-lg gap-2 p-1 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
+        <div className="relative flex w-full md:max-w-[1400px] max-w-[350px] items-center justify-center rounded-lg gap-2 p-1 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
           <Marquee reverse pauseOnHover className="[--duration:20s] flex p-4">
             {DATA.skills.map((skill, index) => (
               <div
@@ -185,75 +207,78 @@ const MyPage = () => {
           </Marquee>
         </div>
       </section>
-      <section id="projects">
-        <div className="relative w-full py-8 flex flex-col items-center rounded-3xl">
-          <BlurFade delay={BLUR_FADE_DELAY * 11}>
-            <div className="flex flex-col items-center justify-center space-y-6 text-center mb-6">
-              <div className="space-y-3">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold  text-center">
-                  <AuroraText>Projects</AuroraText>
-                </h2>
-                <div>
-                  <h2 className="text-4xl font-extrabold sm:text-5xl ">
-                    <AuroraText>Explore My Work</AuroraText>
+      {DATA.projects && DATA.projects.length > 0 && (
+        <section id="projects">
+          <div className="relative w-full py-8 flex flex-col items-center rounded-3xl">
+            <BlurFade delay={BLUR_FADE_DELAY * 11}>
+              <div className="flex flex-col items-center justify-center space-y-6 text-center mb-6">
+                <div className="space-y-3">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold  text-center">
+                    <AuroraText>Projects</AuroraText>
                   </h2>
+                  <div>
+                    <h2 className="text-4xl font-extrabold sm:text-5xl ">
+                      <AuroraText>Explore My Work</AuroraText>
+                    </h2>
+                  </div>
+                  <TextAnimate
+                    animation="fadeIn"
+                    className="text-gray-600 dark:text-gray-300 md:text-lg lg:text-base/relaxed xl:text-lg/relaxed max-w-3xl mx-auto"
+                  >
+                    I&apos;ve built a range of projects, from responsive
+                    websites to full-stack applications. Here are some of my
+                    favorites!
+                  </TextAnimate>
                 </div>
-                <TextAnimate
-                  animation="fadeIn"
-                  className="text-gray-600 dark:text-gray-300 md:text-lg lg:text-base/relaxed xl:text-lg/relaxed max-w-3xl mx-auto"
-                >
-                  I&apos;ve built a range of projects, from responsive websites
-                  to full-stack applications. Here are some of my favorites!
-                </TextAnimate>
               </div>
-            </div>
-          </BlurFade>
+            </BlurFade>
 
-          <motion.div
-            className="relative overflow-hidden transition-all h-full w-full sm:max-h-none"
-            style={{
-              maxHeight: showProjects ? "none" : "420px",
-            }}
-            animate={
-              typeof window !== "undefined" && window.innerWidth >= 640
-                ? { maxHeight: showProjects ? "1200px" : "420px" }
-                : {}
-            }
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-          >
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 lg:grid-cols-3">
-              {DATA.projects.map((project, id) => (
-                <BlurFade
-                  key={project.title}
-                  delay={BLUR_FADE_DELAY * 12 + id * 0.05}
-                >
-                  <ProjectCard
-                    href={project.href}
-                    title={project.title}
-                    description={project.description}
-                    dates={project.dates}
-                    tags={project.technologies}
-                    image={project.image}
-                    video={project.video}
-                    links={project.links}
-                  />
-                </BlurFade>
-              ))}
-            </div>
+            <motion.div
+              className="relative overflow-hidden transition-all h-full w-full sm:max-h-none"
+              style={{
+                maxHeight: showProjects ? "none" : "420px",
+              }}
+              animate={
+                typeof window !== "undefined" && window.innerWidth >= 640
+                  ? { maxHeight: showProjects ? "1200px" : "420px" }
+                  : {}
+              }
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            >
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 lg:grid-cols-3">
+                {DATA.projects.map((project, id) => (
+                  <BlurFade
+                    key={project.title}
+                    delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+                  >
+                    <ProjectCard
+                      href={project.href}
+                      title={project.title}
+                      description={project.description}
+                      dates={project.dates}
+                      tags={project.technologies}
+                      image={project.image}
+                      video={project.video}
+                      links={project.links}
+                    />
+                  </BlurFade>
+                ))}
+              </div>
 
-            {!showProjects && (
-              <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-black to-transparent mx-12"></div>
-            )}
-          </motion.div>
+              {!showProjects && (
+                <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-black to-transparent mx-12"></div>
+              )}
+            </motion.div>
 
-          <button
-            onClick={() => setShowProjects(!showProjects)}
-            className="mt-6 rounded-xl bg-black px-6 py-3 text-lg font-semibold text-white transition-all hover:scale-105 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-300"
-          >
-            {showProjects ? "Hide Projects" : "View Projects"}
-          </button>
-        </div>
-      </section>
+            <button
+              onClick={() => setShowProjects(!showProjects)}
+              className="mt-6 rounded-xl bg-black px-6 py-3 text-lg font-semibold text-white transition-all hover:scale-105 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-300"
+            >
+              {showProjects ? "Hide Projects" : "View Projects"}
+            </button>
+          </div>
+        </section>
+      )}
       {DATA.hackathons && DATA.hackathons.length > 0 && (
         <section id="hackathons">
           <div className="space-y-12 w-full py-8">
@@ -314,7 +339,7 @@ const MyPage = () => {
             <AuroraText>Certificates</AuroraText>
           </h2>
 
-          <div className="relative overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 sm:m-6 flex flex-col items-center p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
+          <div className="relative mx-6 overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 sm:m-6 flex flex-col items-center p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
             <div
               ref={scrollRefCert}
               className={`relative flex gap-4 items-center my-4 sm:my-6 w-full max-w-[1360px] px-2 sm:px-6 z-10 scroll-smooth ${
@@ -343,22 +368,22 @@ const MyPage = () => {
           </div>
         </section>
       )}
-      <section id="Achivements">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
-          <AuroraText>Achievements</AuroraText>
-        </h2>
-<div className="relative overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 sm:m-6 flex flex-col items-center p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
-        {/* <div className="flex flex-col items-center"> */}
-          {/* <WarpBackground className="w-full max-w-[1430px] px-4 sm:px-6 md:px-8 my-12 flex justify-center">  */}
-          <Card className="flex flex-col sm:w-auto md:w-auto lg:w-[840px]">
-            <CardContent className="flex flex-col p-4 items-center">
-              {DATA.achievements.map((item, idx) => (
-                <Achievement {...item} key={idx} />
-              ))}
-            </CardContent>
-          </Card>
-        </div>  
-      </section>
+      {DATA.achievements && DATA.achievements.length > 0 && (
+        <section id="Achivements">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10">
+            <AuroraText>Achievements</AuroraText>
+          </h2>
+          <div className="relative overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 m-6 flex flex-col items-center p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
+            <Card className="flex flex-col sm:w-auto md:w-auto lg:w-[840px]">
+              <CardContent className="flex flex-col p-4 items-center">
+                {DATA.achievements.map((item, idx) => (
+                  <Achievement {...item} key={idx} />
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+      )}
       <section id="contact">
         <div className="flex flex-col items-center justify-center gap-6 px-6 py-6 text-center">
           <BlurFade delay={BLUR_FADE_DELAY * 16}>
