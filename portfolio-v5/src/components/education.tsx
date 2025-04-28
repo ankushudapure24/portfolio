@@ -24,7 +24,6 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
             "border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 dark:hover:bg-gray-800 transition-all duration-300 ease-in-out hover:shadow-lg h-full"
           )}
         >
-          {/* Circular Image */}
           <div className="rounded-full overflow-hidden border-2 border-gray-300 dark:border-gray-600 shadow-md w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28">
             <Image
               src={logoUrl}
