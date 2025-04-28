@@ -34,6 +34,3 @@ const SkillsCard = () => {
 
 export default SkillsCard;
 
-<section id="skills" className="py-8">
-  {/* <div className="flex min-h-0 flex-col gap-y-3"> */}
-</section>;
