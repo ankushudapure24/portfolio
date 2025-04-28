@@ -9,7 +9,6 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
   console.log("theme---", theme);
 
   return (
-    // <Card className="w-full max-w-[300px] max-h-[400px] rounded-2xl p-4 bg">
     <MagicCard
       gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
       className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[320px] h-auto rounded-2xl"
