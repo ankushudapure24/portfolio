@@ -1,20 +1,20 @@
 "use client";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import BlurFade from "@/components/magicui/blur-fade";
-import { DATA, DATA2 } from "@/data/resume";
+import { DATA} from "@/data/resume";
 import { Marquee } from "@/components/magicui/marquee";
 import WorkCard from "@/components/WorkCard";
 import ProfileCard from "@/components/profile";
 import Image from "next/image";
 import { RetroGrid } from "@/components/magicui/retro-grid";
-import EducationItem from "@/components/education";
+import EducationItem from "@/components/Education";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { ProjectCard } from "@/components/project-card-new";
 import Certification from "@/components/Certification";
 import { motion } from "framer-motion";
-import { HackathonCard } from "@/components/hacathon-card-new";
+import { HackathonCard } from "@/components/HackathonCard";
 import Link from "next/link";
-import { ContactCard } from "@/components/contact-card";
+import { ContactCard } from "@/components/ContactCard";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { Card, CardContent } from "@/components/ui/card";
 import Achievement from "@/components/Achivements";
@@ -116,7 +116,7 @@ const MyPage = () => {
         <AuroraText>Education</AuroraText>
       </h2>
       <section className="education">
-        <div className="flex flex-col mx-10 mb-10 bg-white dark:bg-black rounded-3xl shadow-lg p-4 sm:p-6 relative overflow-hidden">
+        <div className="flex flex-col mx-4 md:mx-10 mb-10 bg-white dark:bg-black rounded-3xl shadow-lg p-4 sm:p-6 relative overflow-hidden">
           <div
             ref={scrollRef}
             className="flex overflow-x-auto space-x-4 sm:space-x-6 mt-6 px-6 pb-4 scroll-smooth"
