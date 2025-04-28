@@ -6,7 +6,7 @@ import { Marquee } from "@/components/magicui/marquee";
 import WorkCard from "@/components/WorkCard";
 import ProfileCard from "@/components/profile";
 import Image from "next/image";
-import EducationItem from "@/components/Education";
+import EducationItem from "@/components/EducationCard";
 import { RetroGrid } from "@/components/magicui/retro-grid";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { ProjectCard } from "@/components/project-card-new";
