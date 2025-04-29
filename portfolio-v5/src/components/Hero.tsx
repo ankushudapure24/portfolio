@@ -42,9 +42,9 @@ const ProfileCard = () => {
         <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white">
           Hey Hi! I&apos;m <AuroraText>{DATA.name.split(" ")[0]}</AuroraText>
         </h1>
-        <p className="text-lg sm:text-2xl text-gray-600 dark:text-gray-400">
-          <TextAnimate>{DATA.description}</TextAnimate>
-        </p>
+        <TextAnimate className="text-lg sm:text-2xl text-gray-600 dark:text-gray-40">
+          {DATA.description}
+        </TextAnimate>
         <div className="flex flex-col mt-6 md:flex-row items-center md:items-start gap-4 md:gap-8 max-w-5xl bg-gradient-to-bl dark:from-gray-900 dark:via-violet-600 dark:to-blue-600 rounded-xl w-full px-2 py-1 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
           <div className="flex-shrink-0 m-2">
             <Avatar className="w-60 h-52 sm:w-48 sm:h-48 md:w-52 md:h-52 border-2 bg-white dark:bg-black border-black dark:border-white rounded-2xl">
