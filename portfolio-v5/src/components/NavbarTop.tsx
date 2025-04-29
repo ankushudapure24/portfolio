@@ -2,9 +2,7 @@
 
 import React, { useState } from "react";
 import { DATA } from "@/data/resume";
-import { ModeToggle } from "@/components/mode-toggle"; 
-import { Separator } from "@radix-ui/react-separator";
-import Link from "next/link";
+import { ModeToggle } from "@/components/mode-toggle";
 import { AnimatedGradientText } from "./magicui/animated-gradient-text";
 import { cn } from "@/lib/utils";
 import { ShinyButton } from "./magicui/shiny-button";

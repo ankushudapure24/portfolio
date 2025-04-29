@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants} from "framer-motion";
 import { useMemo } from "react";
 
 interface BlurFadeTextProps {
@@ -49,7 +49,7 @@ const BlurFadeText = ({
                 delay: delay + i * characterDelay,
                 ease: "easeOut",
               }}
-              className={cn("inline-block", className)}
+              // className={cn("inline-block", className)}
               style={{ width: char.trim() === "" ? "0.2em" : "auto" }}
             >
               {char}
@@ -73,7 +73,7 @@ const BlurFadeText = ({
             delay,
             ease: "easeOut",
           }}
-          className={cn("inline-block", className)}
+          // className={cn("inline-block", className)}
         >
           {text}
         </motion.span>

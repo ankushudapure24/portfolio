@@ -404,6 +404,64 @@ export const DATA = {
       video:
         "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
     },
+    {
+      title: "Automatic Chat",
+      href: "https://automatic.chat",
+      dates: "April 2023 - March 2024",
+      active: true,
+      description:
+        "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Magic UI",
+        "Stripe",
+        "Cloudflare Workers",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://automatic.chat",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
+    },
+    {
+      title: "Automatic Chat",
+      href: "https://automatic.chat",
+      dates: "April 2023 - March 2024",
+      active: true,
+      description:
+        "Developed an AI Customer Support Chatbot which automatically responds to customer support tickets using the latest GPT models.",
+      technologies: [
+        "Next.js",
+        "Typescript",
+        "PostgreSQL",
+        "Prisma",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Magic UI",
+        "Stripe",
+        "Cloudflare Workers",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://automatic.chat",
+          icon: <Icons.globe className="size-3" />,
+        },
+      ],
+      image: "",
+      video:
+        "https://pub-83c5db439b40468498f97946200806f7.r2.dev/automatic-chat.mp4",
+    }, 
   ],
 
   hackathons: [

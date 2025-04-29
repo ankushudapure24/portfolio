@@ -1,33 +1,31 @@
 "use client";
+import Link from "next/link";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import BlurFade from "@/components/magicui/blur-fade";
 import { DATA} from "@/data/resume";
 import { Marquee } from "@/components/magicui/marquee";
-import WorkCard from "@/components/WorkCard";
-import ProfileCard from "@/components/profile";
-import Image from "next/image";
-import EducationItem from "@/components/EducationCard";
 import { RetroGrid } from "@/components/magicui/retro-grid";
 import { BorderBeam } from "@/components/magicui/border-beam";
-import { ProjectCard } from "@/components/project-card-new";
-import Certification from "@/components/Certification";
-import { motion } from "framer-motion";
+import WorkCard from "@/components/WorkCard";
+import ProfileCard from "@/components/Hero";
+import Image from "next/image";
+import EducationItem from "@/components/EducationCard";
+import { ProjectCard } from "@/components/ProjectCard";
 import { HackathonCard } from "@/components/HackathonCard";
-import Link from "next/link";
+import Certification from "@/components/Certification";
+import Achievement from "@/components/Achivements";
 import { ContactCard } from "@/components/ContactCard";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { Card, CardContent } from "@/components/ui/card";
-import Achievement from "@/components/Achivements";
 import { useEffect, useRef, useState } from "react";
 
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
-  const [showProjects, setShowProjects] = useState(false);
+  const [showAllPro, setShowAllPro] = useState(false);
   const [showAll, setShowAll] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const scrollRefCert = useRef<HTMLDivElement>(null);
-
   const autoScrollInterval = useRef<NodeJS.Timeout | null>(null);
 
   //for education cards
@@ -38,13 +36,11 @@ const MyPage = () => {
 
         // Check if scrolled to (or near) the end
         if (scrollLeft + clientWidth >= scrollWidth - 10) {
-          // If at the end, scroll back to the start smoothly
           scrollRef.current.scrollTo({
             left: 0,
             behavior: "smooth",
           });
         } else {
-          // Else, scroll right by 320px smoothly
           scrollRef.current.scrollBy({
             left: 330,
             behavior: "smooth",
@@ -232,50 +228,41 @@ const MyPage = () => {
                 </div>
               </div>
             </BlurFade>
-
-            <motion.div
-              className="relative overflow-hidden transition-all h-full w-full sm:max-h-none"
-              style={{
-                maxHeight: showProjects ? "none" : "420px",
-              }}
-              animate={
-                typeof window !== "undefined" && window.innerWidth >= 640
-                  ? { maxHeight: showProjects ? "1200px" : "420px" }
-                  : {}
-              }
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            >
-              <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 lg:grid-cols-3">
-                {DATA.projects.map((project, id) => (
-                  <BlurFade
-                    key={project.title}
-                    delay={BLUR_FADE_DELAY * 12 + id * 0.05}
-                  >
-                    <ProjectCard
-                      href={project.href}
-                      title={project.title}
-                      description={project.description}
-                      dates={project.dates}
-                      tags={project.technologies}
-                      image={project.image}
-                      video={project.video}
-                      links={project.links}
-                    />
-                  </BlurFade>
-                ))}
-              </div>
-
-              {!showProjects && (
-                <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-white dark:from-black to-transparent mx-12"></div>
-              )}
-            </motion.div>
-
-            <button
-              onClick={() => setShowProjects(!showProjects)}
-              className="mt-6 rounded-xl bg-black px-6 py-3 text-lg font-semibold text-white transition-all hover:scale-105 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-300"
-            >
-              {showProjects ? "Hide Projects" : "View Projects"}
-            </button>
+            <div className="space-y-12 w-full py-8">
+              <BlurFade delay={BLUR_FADE_DELAY * 14}>
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 p-6 gap-6 lg:grid-cols-3">
+                  {DATA.projects
+                    .slice(0, showAllPro ? DATA.projects.length : 3)
+                    .map((project, id) => (
+                      <BlurFade
+                        key={project.title}
+                        delay={BLUR_FADE_DELAY * 12 + id * 0.05}
+                      >
+                        <ProjectCard
+                          href={project.href}
+                          title={project.title}
+                          description={project.description}
+                          dates={project.dates}
+                          tags={project.technologies}
+                          image={project.image}
+                          video={project.video}
+                          links={project.links}
+                        />
+                      </BlurFade>
+                    ))}
+                </div>
+                {DATA.hackathons.length > 8 && (
+                  <div className="flex justify-center mt-4">
+                    <button
+                      className="mt-4 rounded-xl bg-black px-6 py-3 text-lg font-semibold text-white transition-all hover:scale-105 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-300"
+                      onClick={() => setShowAllPro(!showAllPro)}
+                    >
+                      {showAllPro ? "Show Less" : "Show More"}
+                    </button>
+                  </div>
+                )}
+              </BlurFade>
+            </div>
           </div>
         </section>
       )}
