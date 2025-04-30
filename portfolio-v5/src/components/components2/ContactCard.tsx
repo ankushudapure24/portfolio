@@ -23,7 +23,7 @@ export function ContactCard() {
   const [captchaToken, setCaptchaToken] = useState<string>("");
 
   const { theme } = useTheme();
-  console.log('theme---',theme);
+  // console.log('theme---',theme);
 
   useEffect(() => {
     const script = document.createElement("script");

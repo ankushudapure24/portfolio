@@ -6,9 +6,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import Image from "next/image";
-import { cn } from "@/lib/utils"; // utility for conditional classnames if you use it
-import { useState } from "react";
-import { BorderBeam } from "./magicui/border-beam";
+import { BorderBeam } from "../magicui/border-beam";
 
 interface CertificationProps {
   title: string;

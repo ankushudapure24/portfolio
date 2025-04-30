@@ -3,10 +3,10 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DATA } from "@/data/resume";
-import BlurFade from "./magicui/blur-fade";
+import BlurFade from "../magicui/blur-fade";
 import Markdown from "react-markdown";
 import Image from "next/image";
-import { AuroraText } from "./magicui/aurora-text";
+import { AuroraText } from "../magicui/aurora-text";
 
 const BLUR_FADE_DELAY = 0.04;
 

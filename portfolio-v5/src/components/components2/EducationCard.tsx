@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { MagicCard } from "./magicui/magic-card";
-import { Card, CardContent } from "./ui/card";
+import { MagicCard } from "../magicui/magic-card";
+import { Card, CardContent } from "../ui/card";
 import { useTheme } from "next-themes";
 
 const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {

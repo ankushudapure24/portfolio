@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import { DATA } from "@/data/resume";
-import { ModeToggle } from "@/components/mode-toggle";
-import { AnimatedGradientText } from "./magicui/animated-gradient-text";
+import { ModeToggle } from "@/components/components2/mode-toggle";
+import { AnimatedGradientText } from "../magicui/animated-gradient-text";
 import { cn } from "@/lib/utils";
-import { ShinyButton } from "./magicui/shiny-button";
+import { ShinyButton } from "../magicui/shiny-button";
 
 interface NavItem {
   label: string;
@@ -54,21 +54,21 @@ const NavbarTop: React.FC = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-500 transition mt-1"
+                className="text-gray-800 dark:text-white hover:text-blue-500 transition mt-1"
               >
                 {item.label}
               </a>
             ))}
           </div>
           <div className="flex gap-6">
-            <div className="hidden md:block">
-              <ModeToggle />
-            </div>
             <a href="#contact">
               <ShinyButton className="hidden md:block rounded-full border">
                 Hire Me
               </ShinyButton>
             </a>
+            <div className="hidden md:block">
+              <ModeToggle />
+            </div>
           </div>
           <button
             className="md:hidden text-gray-700 dark:text-gray-300"
