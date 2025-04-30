@@ -22,7 +22,7 @@
 
     return (
       <>
-        <div className="flex flex-col sm:flex-row-reverse bg-white shadow-lg rounded-2xl p-4 sm:p-6 mb-6 w-full items-center sm:items-start justify-between gap-4 sm:gap-6 dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15] transition-all duration-300">
+        <div className="flex flex-col sm:flex-row-reverse bg-white hover:bg-violet-100 shadow-lg rounded-2xl p-4 sm:p-6 mb-6 w-full items-center sm:items-start justify-between gap-4 sm:gap-6 dark:border-gray-50/[.1] dark:bg-gray-950 dark:hover:bg-violet-950 transition-all duration-300">
           {/* Image Section (Top on mobile, Right on larger screens) */}
           <div
             className="w-full sm:min-w-[180px] sm:max-w-[240px] h-auto relative rounded-xl overflow-hidden cursor-pointer"

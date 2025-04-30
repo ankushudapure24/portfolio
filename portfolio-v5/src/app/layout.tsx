@@ -1,5 +1,5 @@
-import Navbar from "@/components/NavbarSide";
-import NavbarTop from "@/components/NavbarTop";
+import Navbar from "@/components/components2/NavbarSide";
+import NavbarTop from "@/components/components2/NavbarTop";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";

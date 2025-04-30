@@ -6,19 +6,19 @@ import { DATA} from "@/data/resume";
 import { Marquee } from "@/components/magicui/marquee";
 import { RetroGrid } from "@/components/magicui/retro-grid";
 import { BorderBeam } from "@/components/magicui/border-beam";
-import WorkCard from "@/components/WorkCard";
-import ProfileCard from "@/components/Hero";
+import WorkCard from "@/components/components2/WorkCard";
+import ProfileCard from "@/components/components2/Hero";
 import Image from "next/image";
-import EducationItem from "@/components/EducationCard";
-import { ProjectCard } from "@/components/ProjectCard";
-import { HackathonCard } from "@/components/HackathonCard";
-import Certification from "@/components/Certification";
-import Achievement from "@/components/Achivements";
-import { ContactCard } from "@/components/ContactCard";
+import EducationItem from "@/components/components2/EducationCard";
+import { ProjectCard } from "@/components/components2/ProjectCard";
+import { HackathonCard } from "@/components/components2/HackathonCard";
+import Certification from "@/components/components2/Certification";
+import Achievement from "@/components/components2/Achivements";
+import { ContactCard } from "@/components/components2/ContactCard";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
-
+import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
@@ -361,13 +361,23 @@ const MyPage = () => {
             <AuroraText>Achievements</AuroraText>
           </h2>
           <div className="relative overflow-hidden px-4 sm:px-6 lg:m-12 md:m-6 m-6 flex flex-col items-center p-4 sm:p-4 rounded-3xl dark:from-gray-950 dark:to-gray-950 shadow-[0_0_10px_rgba(124,58,237,0.5),0_0_20px_rgba(37,99,235,0.5)]">
-            <Card className="flex flex-col sm:w-auto md:w-auto lg:w-[840px]">
-              <CardContent className="flex flex-col p-4 items-center">
-                {DATA.achievements.map((item, idx) => (
-                  <Achievement {...item} key={idx} />
-                ))}
-              </CardContent>
-            </Card>
+            <div className="absolute inset-0 z-0">
+              <FlickeringGrid
+                className=" z-0 "
+                squareSize={2}
+                gridGap={10}
+                color="#90A5FA"
+                maxOpacity={0.5}
+                flickerChance={0.1}
+              />
+            </div>
+            {/* <Card className="relative flex flex-col sm:w-auto md:w-auto lg:w-[840px]"> */}
+            <CardContent className="relative flex flex-col p-4 items-center m:w-auto md:w-auto lg:w-[840px]">
+              {DATA.achievements.map((item, idx) => (
+                <Achievement {...item} key={idx} />
+              ))}
+            </CardContent>
+            {/* </Card> */}
           </div>
         </section>
       )}
