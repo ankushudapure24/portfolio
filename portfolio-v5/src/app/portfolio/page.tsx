@@ -19,6 +19,8 @@ import { AuroraText } from "@/components/magicui/aurora-text";
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import * as SiIcons from "react-icons/si"; 
+import * as FaIcons from "react-icons/fa";
 const BLUR_FADE_DELAY = 0.04;
 
 const MyPage = () => {
@@ -179,27 +181,28 @@ const MyPage = () => {
 
         <div className="relative flex w-full md:max-w-[1400px] max-w-[350px] items-center justify-center rounded-lg gap-2 p-1 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
           <Marquee reverse pauseOnHover className="[--duration:20s] flex p-4">
-            {DATA.skills.map((skill, index) => (
-              <div
-                key={index}
-                className="w-32 h-40 bg-white dark:bg-gray-800 border-2 border-indigo-950 dark:border-indigo-600 rounded-xl shadow-xl flex flex-col items-center justify-between p-4 transform transition-transform duration-300 hover:scale-105 hover:border-blue-500 group"
-              >
-                <div className="h-20 flex items-center justify-center">
-                  <Image
-                    src={skill.icons_url}
-                    alt={skill.name}
-                    width={44}
-                    height={44}
-                    className="transition-transform duration-300 group-hover:scale-110"
-                  />
+            {DATA.skills.map((skill, index) => {
+              const IconComponent =
+                SiIcons[skill.icon as keyof typeof SiIcons] ||
+                FaIcons[skill.icon as keyof typeof FaIcons];
+              return (
+                <div
+                  key={index}
+                  className="w-32 h-40 bg-white dark:bg-gray-950 border-2 border-indigo-950 dark:border-indigo-600 rounded-xl shadow-xl flex flex-col items-center justify-between p-4 transform transition-transform duration-300 hover:scale-110 group"
+                >
+                  <div className="h-20 flex items-center justify-center">
+                    {IconComponent && (
+                      <IconComponent className="text-5xl text-indigo-800 dark:text-indigo-400 transition-transform duration-300 group-hover:scale-110" />
+                    )}
+                  </div>
+                  <div className="flex items-end justify-center">
+                    <span className="text-md font-medium text-center text-gray-800 dark:text-gray-100">
+                      {skill.name}
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-end justify-center">
-                  <span className="text-md font-medium text-center text-gray-800 dark:text-gray-100">
-                    {skill.name}
-                  </span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </Marquee>
         </div>
       </section>
