@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import BlurFade from "@/components/magicui/blur-fade";
-import { DATA} from "@/data/resume";
+import { DATA } from "@/data/resume";
 import { Marquee } from "@/components/magicui/marquee";
 import { RetroGrid } from "@/components/magicui/retro-grid";
 import { BorderBeam } from "@/components/magicui/border-beam";
@@ -19,7 +19,7 @@ import { AuroraText } from "@/components/magicui/aurora-text";
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
-import * as SiIcons from "react-icons/si"; 
+import * as SiIcons from "react-icons/si";
 import * as FaIcons from "react-icons/fa";
 const BLUR_FADE_DELAY = 0.04;
 
@@ -154,17 +154,21 @@ const MyPage = () => {
         </div>
       </section>
       {DATA.work && DATA.work.length > 0 && (
-        <section id="work" className="w-full px-4 sm:px-6 md:px-10">
+        <section
+          id="work"
+          className="w-full px-4 sm:px-6 md:px-10 py-8 sm:py-12"
+        >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 md:mb-12">
             <AuroraText>Work Experience</AuroraText>
           </h2>
 
-          <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-3xl border bg-background p-4 sm:p-6 md:p-10">
+          <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-3xl border bg-background p-4 sm:p-6 md:p-10 w-full max-w-7xl mx-auto">
             <div className="absolute inset-0 z-0">
               <RetroGrid />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {/* Flex on mobile, grid on sm and above */}
+            <div className="relative z-10 flex flex-col items-center justify-center gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 w-full">
               {DATA.work.map((job) => (
                 <WorkCard key={job.company} {...job} />
               ))}
@@ -174,13 +178,14 @@ const MyPage = () => {
           </div>
         </section>
       )}
+
       <section id="skills" className="items-center flex flex-col">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
           <AuroraText>Skills</AuroraText>
         </h2>
 
-        <div className="relative flex w-full md:max-w-[1400px] max-w-[350px] items-center justify-center rounded-lg gap-2 p-1 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
-          <Marquee reverse pauseOnHover className="[--duration:20s] flex p-4">
+        <div className="relative flex w-full md:max-w-[1400px] max-w-[330px] items-center justify-center rounded-lg gap-2 p-1 bg-gradient-to-r from-blue-400 to-indigo-700 overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:20s] flex p-4">
             {DATA.skills.map((skill, index) => {
               const IconComponent =
                 SiIcons[skill.icon as keyof typeof SiIcons] ||
@@ -290,7 +295,10 @@ const MyPage = () => {
               </div>
             </BlurFade>
             <BlurFade delay={BLUR_FADE_DELAY * 14}>
-              <div className="flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-4 m-5 sm:m-10 gap-4 items-center">
+              <div
+                className="flex flex-col items-center gap-6 px-4 sm:px-6 md:px-10 py-6
+              md:grid md:grid-cols-2 lg:grid-cols-4"
+              >
                 {DATA.hackathons
                   .slice(0, showAll ? DATA.hackathons.length : 8)
                   .map((project, id) => (

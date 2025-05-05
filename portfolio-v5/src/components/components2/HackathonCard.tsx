@@ -43,7 +43,7 @@ export function HackathonCard({
     >
       {/* Avatar Section */}
       <div className="flex flex-col items-center w-full pt-6">
-        <Avatar className="size-20 border border-gray-200 dark:border-gray-600 shadow-md">
+        <Avatar className="size-32 border border-gray-200 dark:border-gray-600 shadow-md">
           <AvatarImage src={image} alt={title} className="object-cover" />
           <AvatarFallback className="text-lg font-bold text-gray-700 dark:text-gray-200">
             {title[0]}

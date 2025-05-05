@@ -1,17 +1,37 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { MagicCard } from "../magicui/magic-card";
-import { Card, CardContent } from "../ui/card";
+import { CardContent } from "../ui/card";
 import { useTheme } from "next-themes";
 
-const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
+interface EducationItemProps {
+  school: string;
+  href: string;
+  degree: string;
+  logoUrl: string;
+  start: string;
+  end?: string;
+  className?: string;
+}
+
+const EducationItem: React.FC<EducationItemProps> = ({
+  school,
+  href,
+  degree,
+  logoUrl,
+  start,
+  end,
+  className,
+}) => {
   const { theme } = useTheme();
-  console.log("theme---", theme);
 
   return (
     <MagicCard
       gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
-      className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[320px] h-auto rounded-2xl"
+      className={cn(
+        "w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-[320px] h-auto rounded-2xl",
+        className
+      )}
     >
       <CardContent className="p-4 h-[360px]">
         <a
@@ -44,7 +64,7 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
 
           <div className="text-xs text-gray-500 dark:text-gray-400">
             <p>
-              {start} - {end ? end : "Present"}
+              {start} - {end || "Present"}
             </p>
           </div>
 
@@ -54,8 +74,8 @@ const EducationItem = ({ school, href, degree, logoUrl, start, end }: any) => {
         </a>
       </CardContent>
     </MagicCard>
-
   );
 };
 
 export default EducationItem;
+

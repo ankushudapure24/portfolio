@@ -1,6 +1,3 @@
-
-
-
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -45,9 +42,10 @@ export function ProjectCard({
 }: Props) {
   return (
     <Card
-      className={
-        "flex flex-col m-6 lg:w-full max-w-[400px] overflow-hidden border hover:shadow-lg backdrop-blur-lg hover:border-gray-400 rounded-2xl transition-all duration-300 ease-out h-full "
-      }
+      className={cn(
+        "flex flex-col m-6 lg:w-full max-w-[400px] overflow-hidden border hover:shadow-lg backdrop-blur-lg hover:border-gray-400 rounded-2xl transition-all duration-300 ease-out h-full",
+        className
+      )}
     >
       <Link href={href || "#"} className="block">
         {video && (
@@ -74,7 +72,9 @@ export function ProjectCard({
         <CardTitle className="text-lg font-semibold text-gray-800 dark:text-white">
           {title}
         </CardTitle>
-        <time className="text-xs text-gray-500 dark:text-gray-100">{dates}</time>
+        <time className="text-xs text-gray-500 dark:text-gray-100">
+          {dates}
+        </time>
         {link && (
           <div className="text-xs text-blue-500 underline">
             {link.replace("https://", "").replace("www.", "").replace("/", "")}
