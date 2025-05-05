@@ -162,7 +162,7 @@ const MyPage = () => {
             <AuroraText>Work Experience</AuroraText>
           </h2>
 
-          <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-3xl border bg-background p-4 sm:p-6 md:p-10 w-full max-w-7xl mx-auto">
+          <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-3xl border bg-background p-4 sm:p-6 md:p-10 w-full">
             <div className="absolute inset-0 z-0">
               <RetroGrid />
             </div>
